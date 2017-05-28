@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-	<name>RimFridge - A17</name>
-	<author>Kiame Vivacity</author>
-	<targetVersion>0.17.1546</targetVersion>
+	<name>RimFridge</name>
+	<author>Vendan</author>
+	<targetVersion>0.17.0</targetVersion>
 	<description>Adds refrigerated racks to keep food and other perishables cold.  Ideal for use in dining rooms, freeing up labour from feeding prisoners, or keeping food on hand for cooks.
 	
-Comes in both 1x1 and 1x2 versions.
-	
-Original Author: Vendan</description>
+	Edited by Xen
+	Comes in both 1x1 and 1x2 versions.</description>
 </ModMetaData>
