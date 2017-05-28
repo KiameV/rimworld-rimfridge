@@ -1,0 +1,32 @@
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\RimFridge.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\RimFridge.pdb
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\Assembly-CSharp.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\UnityEngine.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\Assembly-CSharp-firstpass.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\NAudio.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\bin\Debug\NVorbis.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\obj\Debug\RimFridge.csprojResolveAssemblyReference.cache
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\obj\Debug\RimFridge.dll
+c:\users\vendan\documents\visual studio 2015\Projects\RimFridge\RimFridge\obj\Debug\RimFridge.pdb
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\RimFridge.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\RimFridge.pdb
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\Assembly-CSharp.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\UnityEngine.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\NAudio.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\NVorbis.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\bin\Debug\UnityEngine.xml
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\obj\Debug\RimFridge.csprojResolveAssemblyReference.cache
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\obj\Debug\RimFridge.dll
+C:\Users\TJX\Desktop\RWStuff\RimFridge\Source\RimFridge\obj\Debug\RimFridge.pdb
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\RimFridge.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\RimFridge.pdb
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\Assembly-CSharp.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\UnityEngine.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\Assembly-CSharp-firstpass.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\NAudio.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\NVorbis.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\bin\Debug\UnityEngine.xml
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\obj\Debug\RimFridge.csprojResolveAssemblyReference.cache
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\obj\Debug\RimFridge.dll
+E:\Steam2\steamapps\common\RimWorld\Mods\RimFridge\Source\RimFridge\obj\Debug\RimFridge.pdb
