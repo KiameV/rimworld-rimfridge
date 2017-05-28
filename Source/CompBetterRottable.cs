@@ -75,44 +75,47 @@ namespace RimFridge
 
         public override void CompTickRare()
         {
-            float rotProgress = this.RotProgress;
-            float num = 1f;
-            float temperatureForCell = GenTemperature.GetTemperatureForCell(this.parent.PositionHeld, this.parent.MapHeld);
-            List<Thing> list = this.parent.MapHeld.thingGrid.ThingsListAtFast(this.parent.PositionHeld);
-            for (int i = 0; i < list.Count; i++)
+            if (this.parent.MapHeld != null && this.parent.Map != null)
             {
-                if (list[i] is Building_Refrigerator)
+                float rotProgress = this.RotProgress;
+                float num = 1f;
+                float temperatureForCell = GenTemperature.GetTemperatureForCell(this.parent.PositionHeld, this.parent.MapHeld);
+                List<Thing> list = this.parent.MapHeld.thingGrid.ThingsListAtFast(this.parent.PositionHeld);
+                for (int i = 0; i < list.Count; i++)
                 {
-                    var bf = list[i] as Building_Refrigerator;
-                    temperatureForCell = bf.Temp;
-                    break;
-                }
-            }
-
-            num *= GenTemperature.RotRateAtTemperature(temperatureForCell);
-            this.RotProgress += Mathf.Round(num * 250f);
-            if (this.Stage == RotStage.Rotting && this.PropsRot.rotDestroys)
-            {
-                if (this.parent.Map.slotGroupManager.SlotGroupAt(this.parent.Position) != null)
-                {
-                    Messages.Message("MessageRottedAwayInStorage".Translate(new object[]
+                    if (list[i] is Building_Refrigerator)
                     {
+                        var bf = list[i] as Building_Refrigerator;
+                        temperatureForCell = bf.Temp;
+                        break;
+                    }
+                }
+
+                num *= GenTemperature.RotRateAtTemperature(temperatureForCell);
+                this.RotProgress += Mathf.Round(num * 250f);
+                if (this.Stage == RotStage.Rotting && this.PropsRot.rotDestroys)
+                {
+                    if (this.parent.Map.slotGroupManager.SlotGroupAt(this.parent.Position) != null)
+                    {
+                        Messages.Message("MessageRottedAwayInStorage".Translate(new object[]
+                        {
                 this.parent.Label
-                    }).CapitalizeFirst(), MessageSound.Silent);
-                    LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
+                        }).CapitalizeFirst(), MessageSound.Silent);
+                        LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
+                    }
+                    this.parent.Destroy(DestroyMode.Vanish);
+                    return;
                 }
-                this.parent.Destroy(DestroyMode.Vanish);
-                return;
-            }
-            if (Mathf.FloorToInt(rotProgress / 60000f) != Mathf.FloorToInt(this.RotProgress / 60000f))
-            {
-                if (this.Stage == RotStage.Rotting && this.PropsRot.rotDamagePerDay > 0f)
+                if (Mathf.FloorToInt(rotProgress / 60000f) != Mathf.FloorToInt(this.RotProgress / 60000f))
                 {
-                    this.parent.TakeDamage(new DamageInfo(DamageDefOf.Rotting, GenMath.RoundRandom(this.PropsRot.rotDamagePerDay), -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
-                }
-                else if (this.Stage == RotStage.Dessicated && this.PropsRot.dessicatedDamagePerDay > 0f && this.ShouldTakeDessicateDamage())
-                {
-                    this.parent.TakeDamage(new DamageInfo(DamageDefOf.Rotting, GenMath.RoundRandom(this.PropsRot.dessicatedDamagePerDay), -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+                    if (this.Stage == RotStage.Rotting && this.PropsRot.rotDamagePerDay > 0f)
+                    {
+                        this.parent.TakeDamage(new DamageInfo(DamageDefOf.Rotting, GenMath.RoundRandom(this.PropsRot.rotDamagePerDay), -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+                    }
+                    else if (this.Stage == RotStage.Dessicated && this.PropsRot.dessicatedDamagePerDay > 0f && this.ShouldTakeDessicateDamage())
+                    {
+                        this.parent.TakeDamage(new DamageInfo(DamageDefOf.Rotting, GenMath.RoundRandom(this.PropsRot.dessicatedDamagePerDay), -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+                    }
                 }
             }
         }
