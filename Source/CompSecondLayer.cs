@@ -1,5 +1,4 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 
 namespace RimFridge
 {
@@ -19,21 +18,17 @@ namespace RimFridge
         {
             get
             {
-                bool flag = this.graphicInt == null;
-                Graphic badGraphic;
-                if (flag)
+                if (this.graphicInt == null)
                 {
                     bool flag2 = this.Props.graphicData == null;
                     if (flag2)
                     {
                         Log.ErrorOnce(this.parent.def + " has no SecondLayer graphicData but we are trying to access it.", 764532);
-                        badGraphic = BaseContent.BadGraphic;
-                        return badGraphic;
+                        return BaseContent.BadGraphic;
                     }
                     this.graphicInt = this.Props.graphicData.GraphicColoredFor(this.parent);
                 }
-                badGraphic = this.graphicInt;
-                return badGraphic;
+                return this.graphicInt;
             }
         }
 

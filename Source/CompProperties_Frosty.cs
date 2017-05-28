@@ -1,12 +1,11 @@
 ﻿using RimWorld;
-using System;
 using Verse;
 
 namespace RimFridge
 {
     internal class CompProperties_Frosty : CompProperties
     {
-        private static CompProperties_Frosty _Beer;
+        private static CompProperties_Frosty beer;
 
         public ThoughtDef thought;
 
@@ -14,13 +13,12 @@ namespace RimFridge
         {
             get
             {
-                bool flag = CompProperties_Frosty._Beer == null;
-                if (flag)
+                if (beer == null)
                 {
-                    CompProperties_Frosty._Beer = new CompProperties_Frosty();
-                    CompProperties_Frosty._Beer.thought = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true);
+                    beer = new CompProperties_Frosty();
+                    beer.thought = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true);
                 }
-                return CompProperties_Frosty._Beer;
+                return beer;
             }
         }
     }

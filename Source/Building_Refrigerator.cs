@@ -85,57 +85,55 @@ namespace RimFridge
 
         public override void TickRare()
         {
-            bool flag = this.Temp < -2000f;
-            if (flag)
+            if (this.Temp < -2000f)
             {
                 this.Temp = GridsUtility.GetTemperature(base.Position, base.Map);
             }
-            foreach (IntVec3 current in this.AllSlotCells())
+            foreach (IntVec3 cell in this.AllSlotCells())
             {
-                foreach (Thing current2 in GridsUtility.GetThingList(current, base.Map))
+                foreach (Thing thing in GridsUtility.GetThingList(cell, base.Map))
                 {
-                    CompRottable compRottable = ThingCompUtility.TryGetComp<CompRottable>(current2);
-                    bool flag2 = compRottable != null && !(compRottable is CompBetterRottable);
-                    if (flag2)
+                    CompRottable rottable = ThingCompUtility.TryGetComp<CompRottable>(thing);
+                    if (rottable != null && !(rottable is CompBetterRottable))
                     {
-                        ThingWithComps thingWithComps = current2 as ThingWithComps;
+                        ThingWithComps thingWithComps = thing as ThingWithComps;
                         CompBetterRottable compBetterRottable = new CompBetterRottable();
-                        thingWithComps.AllComps.Remove(compRottable);
+                        thingWithComps.AllComps.Remove(rottable);
                         thingWithComps.AllComps.Add(compBetterRottable);
-                        compBetterRottable.props = compRottable.props;
+                        compBetterRottable.props = rottable.props;
                         compBetterRottable.parent = thingWithComps;
-                        compBetterRottable.RotProgress = compRottable.RotProgress;
+                        compBetterRottable.RotProgress = rottable.RotProgress;
                     }
 
-                    if (ThingCompUtility.TryGetComp<CompFrosty>(current2) == null && current2.def.defName == "Beer")
+                    if (ThingCompUtility.TryGetComp<CompFrosty>(thing) == null && thing.def.defName == "Beer")
                     {
-                        ThingWithComps thingWithComps2 = current2 as ThingWithComps;
+                        ThingWithComps thingWithComps = thing as ThingWithComps;
                         CompFrosty compFrosty = new CompFrosty();
-                        thingWithComps2.AllComps.Add(compFrosty);
+                        thingWithComps.AllComps.Add(compFrosty);
                         compFrosty.props = CompProperties_Frosty.Beer;
-                        compFrosty.parent = thingWithComps2;
-                        ((TickList)typeof(TickManager).GetField("tickListRare", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(Find.TickManager)).RegisterThing(thingWithComps2);
+                        compFrosty.parent = thingWithComps;
+                        ((TickList)typeof(TickManager).GetField("tickListRare", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(Find.TickManager)).RegisterThing(thingWithComps);
                     }
                 }
             }
-            float temperature = GridsUtility.GetTemperature(base.Position, base.Map);
-            float num = (temperature - this.Temp) * 0.01f;
-            float num2 = -num;
-            float num3 = 0f;
-            bool flag4 = this.Temp + num > -10f;
-            if (flag4)
+
+            float roomTemperature = GridsUtility.GetTemperature(base.Position, base.Map);
+            float changetemperature = (roomTemperature - this.Temp) * 0.01f;
+            float changeEnergy = -changetemperature;
+            float powerMultiplier = 0f;
+            if (this.Temp + changetemperature > -10f)
             {
-                float num4 = Mathf.Max(-10f - (this.Temp + num), -1f);
+                float change = Mathf.Max(-10f - (this.Temp + changetemperature), -1f);
                 if (this.powerComp != null && this.powerComp.PowerOn)
                 {
-                    num += num4;
-                    num2 -= num4 * 1.25f;
+                    changetemperature += change;
+                    changeEnergy -= change * 1.25f;
                 }
-                num3 = num4 * -1f;
+                powerMultiplier = change * -1f;
             }
-            this.Temp += num;
-            GenTemperature.PushHeat(this, num2 * 1.25f);
-            this.powerComp.PowerOutput = -((CompProperties_Power)this.powerComp.props).basePowerConsumption * (num3 * 0.9f + 0.1f);
+            this.Temp += changetemperature;
+            GenTemperature.PushHeat(this, changeEnergy * 1.25f);
+            this.powerComp.PowerOutput = -((CompProperties_Power)this.powerComp.props).basePowerConsumption * (powerMultiplier * 0.9f + 0.1f);
         }
 
         public override string GetInspectString()

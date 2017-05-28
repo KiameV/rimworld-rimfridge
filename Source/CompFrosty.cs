@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using Verse;
 
@@ -46,24 +45,20 @@ namespace RimFridge
         {
             base.CompTickRare();
             float num = 15f;
-            bool flag = this.parent.MapHeld != null;
-            if (flag)
+            if (this.parent.MapHeld != null)
             {
                 num = GridsUtility.GetTemperature(this.parent.PositionHeld, this.parent.MapHeld);
             }
             CompEquippable comp = this.parent.GetComp<CompEquippable>();
-            bool flag2 = comp != null;
-            if (flag2)
+            if (comp != null)
             {
                 Pawn casterPawn = comp.PrimaryVerb.CasterPawn;
-                bool flag3 = casterPawn != null;
-                if (flag3)
+                if (casterPawn != null)
                 {
                     num = GridsUtility.GetTemperature(casterPawn.PositionHeld, casterPawn.MapHeld);
                 }
             }
-            bool spawned = this.parent.Spawned;
-            if (spawned)
+            if (this.parent.Spawned)
             {
                 List<Thing> thingList = GridsUtility.GetThingList(this.parent.PositionHeld, this.parent.MapHeld);
                 for (int i = 0; i < thingList.Count; i++)
