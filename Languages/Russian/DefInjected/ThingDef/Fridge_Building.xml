@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_Refrigerator.label>холодильник</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>Хранилище для портящихся продуктов и вещей.</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator_Blueprint.label>холодильник (проект)</RimFridge_Refrigerator_Blueprint.label>
+  <RimFridge_Refrigerator_Blueprint_Install.label>холодильник (проект)</RimFridge_Refrigerator_Blueprint_Install.label>
+  <RimFridge_Refrigerator_Frame.label>холодильник (строится)</RimFridge_Refrigerator_Frame.label>
+  <RimFridge_Refrigerator_Frame.description>Хранилище для портящихся продуктов и вещей.</RimFridge_Refrigerator_Frame.description>
+
+  <RimFridge_SingleRefrigerator.label>мини-бар</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>Небольшой холодильник для хранения портящихся продуктов и вещей.</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator_Blueprint.label>мини-бар (проект)</RimFridge_SingleRefrigerator_Blueprint.label>
+  <RimFridge_SingleRefrigerator_Blueprint_Install.label>мини-бар (проект)</RimFridge_SingleRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleRefrigerator_Frame.label>мини-бар (строится)</RimFridge_SingleRefrigerator_Frame.label>
+  <RimFridge_SingleRefrigerator_Frame.description>Небольшой холодильник для хранения портящихся продуктов и вещей.</RimFridge_SingleRefrigerator_Frame.description>
+
+
+</LanguageData>
