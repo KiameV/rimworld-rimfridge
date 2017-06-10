@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_Refrigerator.label>冰箱</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>食物放在里面不会腐坏。</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator_Blueprint.label>冰箱（蓝图）</RimFridge_Refrigerator_Blueprint.label>
+  <RimFridge_Refrigerator_Blueprint_Install.label>冰箱（蓝图）</RimFridge_Refrigerator_Blueprint_Install.label>
+  <RimFridge_Refrigerator_Frame.label>冰箱（建造中）</RimFridge_Refrigerator_Frame.label>
+
+  <RimFridge_SingleRefrigerator.label>小冰箱</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>食物放在里面不会腐坏。</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator_Blueprint.label>小冰箱（蓝图）</RimFridge_SingleRefrigerator_Blueprint.label>
+  <RimFridge_SingleRefrigerator_Blueprint_Install.label>小冰箱（蓝图）</RimFridge_SingleRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleRefrigerator_Frame.label>小冰箱（建造中）</RimFridge_SingleRefrigerator_Frame.label>
+
+
+</LanguageData>
