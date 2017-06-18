@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 using Verse;
+using System.Collections.Generic;
 
 namespace RimFridge
 {
@@ -17,11 +18,16 @@ namespace RimFridge
 
         public float Temp = -3000f;
 
+        internal string label;
+        public override string Label { get { return this.label; } }
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             this.powerComp = base.GetComp<CompPowerTrader>();
             this.glow = base.GetComp<CompGlower>();
+            if (this.label == null || this.label.Trim().Length == 0)
+                this.label = base.def.label;
         }
 
         public override void PostMake()
@@ -70,6 +76,12 @@ namespace RimFridge
             base.ExposeData();
             Scribe_Values.Look<float>(ref this.Temp, "temp", -3000f, false);
 
+            string label = this.Label;
+            if (Scribe.mode != LoadSaveMode.Saving || this.label != null)
+            {
+                Scribe_Values.Look<string>(ref label, "label", base.def.label, false);
+            }
+
             if (Scribe.mode == LoadSaveMode.LoadingVars)
             {
                 this.baseSettings.CopyFrom(this.def.building.fixedStorageSettings);
@@ -80,6 +92,7 @@ namespace RimFridge
                         this.baseSettings.filter.SetAllow(current, true);
                     }
                 }
+                this.label = label;
             }
         }
 
@@ -134,6 +147,24 @@ namespace RimFridge
             this.Temp += changetemperature;
             GenTemperature.PushHeat(this, changeEnergy * 1.25f);
             this.powerComp.PowerOutput = -((CompProperties_Power)this.powerComp.props).basePowerConsumption * (powerMultiplier * 0.9f + 0.1f);
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            List<Gizmo> list = new List<Gizmo>(base.GetGizmos());
+            if (list == null)
+                list = new List<Gizmo>();
+
+            Command_Action a = new Command_Action();
+            a.icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true);
+            a.defaultDesc = "RimFridge.RenameTheRefrigerator".Translate();
+            a.defaultLabel = "Rename".Translate();
+            a.activateSound = SoundDef.Named("Click");
+            a.action = delegate { Find.WindowStack.Add(new Dialog_Rename(this)); };
+            a.groupKey = 887767542;
+            list.Add(a);
+            
+            return list;
         }
 
         public override string GetInspectString()

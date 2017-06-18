@@ -50,6 +50,7 @@
     <Compile Include="CompProperties_Frosty.cs" />
     <Compile Include="CompProperties_SecondLayer.cs" />
     <Compile Include="CompSecondLayer.cs" />
+    <Compile Include="Dialog_Rename.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
