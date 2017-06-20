@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_Refrigerator.label>Kühlschrank</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>Verderbliche Waren werden in diesem Kühlschrank nicht verfaulen</RimFridge_Refrigerator.description>
+
+  <RimFridge_SingleRefrigerator.label>Mini-Kühlschrank</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>Verderbliche Waren werden in diesem kleinen Kühlschrank nicht verfaulen</RimFridge_SingleRefrigerator.description>
+
+</LanguageData>
