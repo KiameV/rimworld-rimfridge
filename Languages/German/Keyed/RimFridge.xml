@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge.TargetTemperature>Zieltemperatur</RimFridge.TargetTemperature>
+  <RimFridge.CurrentTemperature>Derzeitige Temperatur</RimFridge.CurrentTemperature>
+  <RimFridge.Power>Leistung</RimFridge.Power>
+  <RimFridge.RenameTheRefrigerator>Kühlschrank umbenennen</RimFridge.RenameTheRefrigerator>
+
+</LanguageData>
