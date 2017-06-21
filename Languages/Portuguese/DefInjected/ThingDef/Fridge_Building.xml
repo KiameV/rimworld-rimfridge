@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<RimFridge_Refrigerator.label>Refrigerador</RimFridge_Refrigerator.label>
+	<RimFridge_Refrigerator.description>Coisas que estragam guardadas aqui não apodrecerão</RimFridge_Refrigerator.description>
+	
+	<RimFridge_SingleRefrigerator.label>Refrigerador Único</RimFridge_SingleRefrigerator.label>
+	<RimFridge_SingleRefrigerator.description>Coisas que estragam guardadas aqui não apodrecerão</RimFridge_SingleRefrigerator.description>
+</LanguageData>

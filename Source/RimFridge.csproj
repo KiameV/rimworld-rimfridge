@@ -55,7 +55,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)..\About\*.*" "$(OutDir)..\About" /Y /I /E
+    <PostBuildEvent>xcopy "$(ProjectDir)..\About\About.xml" "$(OutDir)..\About\" /Y /I
+xcopy "$(ProjectDir)..\About\Preview.png" "$(OutDir)..\About\" /Y /I
+xcopy "$(ProjectDir)..\About\PublishedFileId.txt" "$(OutDir)..\About\" /Y /I
 xcopy "$(ProjectDir)..\Defs\*.*" "$(OutDir)..\Defs" /Y /I /E
 xcopy "$(ProjectDir)..\Languages\*.*" "$(OutDir)..\Languages" /Y /I /E
 xcopy "$(ProjectDir)..\Textures\*.*" "$(OutDir)..\Textures" /Y /I /E</PostBuildEvent>
