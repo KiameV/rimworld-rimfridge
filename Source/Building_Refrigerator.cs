@@ -43,10 +43,13 @@ namespace RimFridge
             this.baseSettings.CopyFrom(this.def.building.fixedStorageSettings);
             foreach (ThingDef current in DefDatabase<ThingDef>.AllDefs)
             {
-                bool flag = current.HasComp(typeof(CompRottable));
-                if (flag)
+                if (current.HasComp(typeof(CompRottable)))
                 {
                     this.baseSettings.filter.SetAllow(current, true);
+                }
+                else if(current.CanEverDeteriorate == true)
+                {
+                    this.baseSettings.filter.SetAllow(current, false);
                 }
             }
             this.settings = new StorageSettings(this);
