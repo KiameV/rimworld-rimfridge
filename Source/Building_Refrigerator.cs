@@ -166,7 +166,9 @@ namespace RimFridge
             a.action = delegate { Find.WindowStack.Add(new Dialog_Rename(this)); };
             a.groupKey = 887767542;
             list.Add(a);
-            
+
+            list = SaveStorageSettingsUtil.SaveStorageSettingsGizmoUtil.AddSaveLoadGizmos(list, "RimFridge", this.settings.filter);
+
             return list;
         }
 
