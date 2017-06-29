@@ -42,6 +42,7 @@
 		<size>(2,1)</size>
 		<building>
 			<preventDeterioration>true</preventDeterioration>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
 					<categories>
@@ -124,6 +125,7 @@
 		<size>(1,1)</size>
 		<building>
 			<preventDeterioration>true</preventDeterioration>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
 					<categories>
