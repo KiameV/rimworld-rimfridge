@@ -14,7 +14,7 @@ namespace RimFridge
 
         public CompGlower glow;
 
-        private StorageSettings baseSettings;
+        private StorageSettings fixedStorageSettings;
 
         public float Temp = -3000f;
 
@@ -39,43 +39,42 @@ namespace RimFridge
                 functionPointer
             });
             action();
-            this.baseSettings = new StorageSettings();
-            this.baseSettings.CopyFrom(this.def.building.fixedStorageSettings);
-            foreach (ThingDef current in DefDatabase<ThingDef>.AllDefs)
-            {
-                if (current.HasComp(typeof(CompRottable)))
-                {
-                    this.baseSettings.filter.SetAllow(current, true);
-                }
-                else if(current.CanEverDeteriorate == true)
-                {
-                    this.baseSettings.filter.SetAllow(current, false);
-                }
-            }
-            this.settings = new StorageSettings(this);
+
+            this.CreateFixedStorageSettings();
+
+            base.settings = new StorageSettings(this);
             if (this.def.building.defaultStorageSettings != null)
             {
-                this.settings.CopyFrom(this.def.building.defaultStorageSettings);
+                base.settings.CopyFrom(this.def.building.defaultStorageSettings);
             }
         }
 
-        public new StorageSettings GetStoreSettings()
+        private void CreateFixedStorageSettings()
         {
-            return this.settings;
+            this.fixedStorageSettings = new StorageSettings();
+            this.fixedStorageSettings.CopyFrom(this.def.building.fixedStorageSettings);
+            foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
+            {
+                if (td.defName.EqualsIgnoreCase("beer") || 
+                    td.defName.EqualsIgnoreCase("eggchickenfertilized") || 
+                    td.HasComp(typeof(CompRottable)))
+                {
+                    this.fixedStorageSettings.filter.SetAllow(td, true);
+                }
+                else if (td.CanEverDeteriorate == true)
+                {
+                    this.fixedStorageSettings.filter.SetAllow(td, false);
+                }
+            }
         }
 
         public new StorageSettings GetParentStoreSettings()
         {
-            return this.baseSettings;
+            return this.fixedStorageSettings;
         }
 
         public override void ExposeData()
         {
-            if (Scribe.mode == LoadSaveMode.LoadingVars)
-            {
-                this.baseSettings = new StorageSettings();
-            }
-
             base.ExposeData();
             Scribe_Values.Look<float>(ref this.Temp, "temp", -3000f, false);
 
@@ -87,15 +86,7 @@ namespace RimFridge
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
             {
-                this.baseSettings.CopyFrom(this.def.building.fixedStorageSettings);
-                foreach (ThingDef current in DefDatabase<ThingDef>.AllDefs)
-                {
-                    if (current.HasComp(typeof(CompRottable)))
-                    {
-                        this.baseSettings.filter.SetAllow(current, true);
-                    }
-                }
-                this.label = label;
+                this.CreateFixedStorageSettings();
             }
         }
 
