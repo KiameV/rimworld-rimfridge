@@ -53,19 +53,19 @@ namespace RimFridge
         {
             this.fixedStorageSettings = new StorageSettings();
             this.fixedStorageSettings.CopyFrom(this.def.building.fixedStorageSettings);
-            foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
+            /*foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
             {
-                if (td.defName.EqualsIgnoreCase("beer") || 
-                    td.defName.EqualsIgnoreCase("eggchickenfertilized") || 
-                    td.HasComp(typeof(CompRottable)))
+                if (td.defName.EqualsIgnoreCase("beer"))
+                    //td.defName.EqualsIgnoreCase("eggchickenfertilized") ||
+                    //td.HasComp(typeof(CompRottable)))
                 {
                     this.fixedStorageSettings.filter.SetAllow(td, true);
                 }
-                else if (td.CanEverDeteriorate == true)
+                /*else if (td.CanEverDeteriorate == true)
                 {
                     this.fixedStorageSettings.filter.SetAllow(td, false);
-                }
-            }
+                }* /
+            }*/
         }
 
         public new StorageSettings GetParentStoreSettings()
