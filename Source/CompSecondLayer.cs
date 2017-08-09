@@ -20,8 +20,7 @@ namespace RimFridge
             {
                 if (this.graphicInt == null)
                 {
-                    bool flag2 = this.Props.graphicData == null;
-                    if (flag2)
+                    if (this.Props.graphicData == null)
                     {
                         Log.ErrorOnce(this.parent.def + " has no SecondLayer graphicData but we are trying to access it.", 764532);
                         return BaseContent.BadGraphic;
