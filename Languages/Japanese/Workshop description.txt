@@ -1,0 +1,32 @@
+﻿腐敗する食料や物品を保管するための冷蔵庫を追加します。ダイニングに設置したり、牢に置いて囚人への給仕に使ったり、コックの手元に食料を保存したりできます。
+
+1x1の小冷蔵庫と2x1の冷蔵庫、さらに2x2の大冷蔵庫があります。
+
+保存できる品物:
+-生肉
+-死体
+-ドラッグ
+-有精卵
+-無精卵
+-調理済みの食事
+-薬品
+-植物原料
+-生野菜
+-その他、腐敗するアイテム
+
+ダウンロード: https://github.com/KiameV/rimworld-rimfridge/releases/download/20170729/RimFridge.zip
+
+GitHub: https://github.com/KiameV/rimworld-rimfridge
+
+Ludeonスレッド: https://ludeon.com/forums/index.php?topic=32980.0
+
+このModを翻訳してくださった方々に感謝!
+Dragomano - ロシア語
+53N4 - スペイン語
+duduluu - 中国語
+phmalu - ポルトガル語
+Breakyt - フランス語
+Ɲơɴɑɱɛ - ドイツ語
+
+主作者: Vendan
+貢献者: Xen, historic

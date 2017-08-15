@@ -74,9 +74,10 @@ namespace RimFridge
             Scribe_Values.Look<float>(ref this.Temp, "temp", -3000f, false);
 
             string label = this.Label;
-            if (Scribe.mode != LoadSaveMode.Saving || this.label != null)
+            if (Scribe.mode == LoadSaveMode.LoadingVars || (Scribe.mode == LoadSaveMode.Saving && this.label != null))
             {
                 Scribe_Values.Look<string>(ref label, "label", base.def.label, false);
+                this.label = label;
             }
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
