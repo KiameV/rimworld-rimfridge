@@ -7,4 +7,8 @@
   <RimFridge_SingleRefrigerator.label>Mini-Kühlschrank</RimFridge_SingleRefrigerator.label>
   <RimFridge_SingleRefrigerator.description>Verderbliche Waren werden in diesem kleinen Kühlschrank nicht verfaulen</RimFridge_SingleRefrigerator.description>
 
+  <RimFridge_QuadRefrigerator.label>Großer Kühlschrank</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>Verderbliche Waren werden in diesem großen Kühlschrank nicht verfaulen</RimFridge_QuadRefrigerator.description>
+
+
 </LanguageData>
