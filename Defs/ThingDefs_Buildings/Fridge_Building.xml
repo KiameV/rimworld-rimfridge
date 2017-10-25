@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
-
+<Defs>
 	<ThingDef Name="FridgeBase" Abstract="True">
-		<DesignationCategory>Furniture</DesignationCategory>
+		<designationCategory>Furniture</designationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<tradeTags>
 			<li>Furniture</li>
@@ -194,7 +193,7 @@
 			<li>PlaceWorker_Heater</li>
 		</placeWorkers>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_QuadRefrigerator</defName>
@@ -284,4 +283,4 @@
 			<li>PlaceWorker_Heater</li>
 		</placeWorkers>
 	</ThingDef>
-</ThingDefs>
+</Defs>
