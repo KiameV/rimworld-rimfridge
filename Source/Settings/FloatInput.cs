@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using RimWorld;
+using Verse;
 
 namespace RimFridge
 {
@@ -36,13 +37,13 @@ namespace RimFridge
             {
                 if (f <= 0)
                 {
-                    Messages.Message(name + " cannot be less than or equal to 0.", MessageSound.RejectInput);
+                    Messages.Message(name + " cannot be less than or equal to 0.", MessageTypeDefOf.RejectInput);
                     return false;
                 }
             }
             else
             {
-                Messages.Message("Unable to parse " + name +  " to a number.", MessageSound.RejectInput);
+                Messages.Message("Unable to parse " + name +  " to a number.", MessageTypeDefOf.RejectInput);
                 return false;
             }
             return true;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace RimFridge
@@ -26,7 +27,7 @@ namespace RimFridge
                 if (Settings.PowerFactor.ValidateInput())
                 {
                     base.GetSettings<Settings>().Write();
-                    Messages.Message("New Power Factor Applied", MessageSound.Benefit);
+                    Messages.Message("New Power Factor Applied", MessageTypeDefOf.PositiveEvent);
                 }
             }
             Widgets.Label(new Rect(20, 100, 400, 30), "<new power usage> = <input value> * <original power usage>");

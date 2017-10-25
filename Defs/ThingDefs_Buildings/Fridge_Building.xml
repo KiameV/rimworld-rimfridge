@@ -43,7 +43,8 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeterioration>true</preventDeterioration>
+			<preventDeteriorationInside>true</preventDeteriorationInside>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
@@ -132,7 +133,8 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeterioration>true</preventDeterioration>
+			<preventDeteriorationInside>true</preventDeteriorationInside>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
@@ -221,7 +223,8 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeterioration>true</preventDeterioration>
+			<preventDeteriorationInside>true</preventDeteriorationInside>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>

@@ -100,7 +100,7 @@ namespace RimFridge
                         Messages.Message("MessageRottedAwayInStorage".Translate(new object[]
                         {
                 this.parent.Label
-                        }).CapitalizeFirst(), MessageSound.Silent);
+                        }).CapitalizeFirst(), MessageTypeDefOf.SilentInput);
                         LessonAutoActivator.TeachOpportunity(ConceptDefOf.SpoilageAndFreezers, OpportunityType.GoodToKnow);
                     }
                     this.parent.Destroy(DestroyMode.Vanish);
@@ -125,7 +125,7 @@ namespace RimFridge
             if (this.parent.ParentHolder != null)
             {
                 Thing thing = this.parent.ParentHolder as Thing;
-                if (thing != null && thing.def.category == ThingCategory.Building && thing.def.building.preventDeterioration)
+                if (thing != null && thing.def.category == ThingCategory.Building && thing.def.building.preventDeteriorationInside)
                 {
                     return false;
                 }
