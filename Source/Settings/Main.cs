@@ -1,4 +1,7 @@
 ﻿using Harmony;
+using RimWorld;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using Verse;
 
@@ -14,6 +17,7 @@ namespace RimFridge
 
             Log.Message("RimFridge: Adding Harmony Postfix to GameComponentUtility.StartedNewGame");
             Log.Message("RimFridge: Adding Harmony Postfix to GameComponentUtility.LoadedGame");
+            Log.Message("RimFridge: Adding Harmony Prefix to CompTemperatureRuinable.DoTicks - Will return false if within a RimFridge");
         }
     }
 
@@ -32,6 +36,62 @@ namespace RimFridge
         static void Postfix()
         {
             RimFridgeSettingsUtil.ApplyFactor(Settings.PowerFactor.AsFloat);
+        }
+    }
+
+    [HarmonyPatch(typeof(CompTemperatureRuinable), "DoTicks")]
+    static class Patch_CompTemperatureRuinable_DoTicks
+    {
+        private static FieldInfo ruinedPercentFI;
+        private static FieldInfo RuinedPercentFI
+        {
+            get
+            {
+                if (ruinedPercentFI == null)
+                {
+                    ruinedPercentFI = typeof(CompTemperatureRuinable).GetField("ruinedPercent", BindingFlags.Instance | BindingFlags.NonPublic);
+                }
+                return ruinedPercentFI;
+            }
+        }
+        static bool Prefix(CompTemperatureRuinable __instance, int ticks)
+        {
+            if (!__instance.Ruined)
+            {
+                IEnumerable<Thing> things = __instance.parent.Map.thingGrid.ThingsAt(__instance.parent.Position);
+                if (things != null)
+                {
+                    foreach (Thing thing in things)
+                    {
+                        if (thing.def.defName.StartsWith("RimFridge"))
+                        {
+                            Building_Refrigerator refridge = (Building_Refrigerator)thing;
+                            float ruinedPercent = (float)RuinedPercentFI.GetValue(__instance);
+                            if (refridge.Temp > __instance.Props.maxSafeTemperature)
+                            {
+                                ruinedPercent += (refridge.Temp - __instance.Props.maxSafeTemperature) *  __instance.Props.progressPerDegreePerTick * (float)ticks;
+                            }
+                            else if (refridge.Temp < __instance.Props.minSafeTemperature)
+                            {
+                                ruinedPercent -= (refridge.Temp - __instance.Props.minSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
+                            }
+
+                            if (ruinedPercent >= 1f)
+                            {
+                                ruinedPercent = 1f;
+                                __instance.parent.BroadcastCompSignal("RuinedByTemperature");
+                            }
+                            else if (ruinedPercent < 0f)
+                            {
+                                ruinedPercent = 0f;
+                            }
+                            RuinedPercentFI.SetValue(__instance, ruinedPercent);
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }
