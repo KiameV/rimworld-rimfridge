@@ -1,0 +1,38 @@
+本模组增加了冰镇食物和其他易腐物的冰箱。此冰箱可以使殖民者从喂食犯人的劳动中解放出来，也可以将食物存放在厨师触手可及之处，是餐厅的理想选择。
+
+包含 1x1、2x1 和 2x2 三个尺寸的版本。
+
+可以在冰箱中存储的物品分类:
+-动物生食
+-尸体
+-药物与成瘾品
+-卵（已受精）
+-卵（未受精）
+-烹饪食品
+-医疗药品
+-植物
+-植物生食
+以及其他可腐烂的物品。
+
+直接下载：https://github.com/KiameV/rimworld-rimfridge/releases/download/20171025/RimFridge.zip
+
+GitHub：https://github.com/KiameV/rimworld-rimfridge
+
+Ludeon论坛讨论页：https://ludeon.com/forums/index.php?topic=32980.0
+
+喜欢模组？支持作者！
+####################
+Here for "Buy Me a Coffee" icon
+####################
+
+感谢所有帮助翻译此模组的人士！
+Dragomano - 俄文
+53N4 - 西班牙文
+duduluu - 中文（简体/繁体）
+phmalu - 葡萄牙文
+Breakyt - 法文
+Ɲơɴɑɱɛ - 德文
+KondenEinenShizainoLaw - 日文
+
+主作者：Vendan
+其他参与者：Xen、historic
