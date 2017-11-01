@@ -37,13 +37,13 @@ namespace RimFridge
             {
                 if (f <= 0)
                 {
-                    Messages.Message(name + " cannot be less than or equal to 0.", MessageTypeDefOf.RejectInput);
+                    Messages.Message(name + " cannot be less than or equal to 0.", MessageSound.RejectInput);
                     return false;
                 }
             }
             else
             {
-                Messages.Message("Unable to parse " + name +  " to a number.", MessageTypeDefOf.RejectInput);
+                Messages.Message("Unable to parse " + name +  " to a number.", MessageSound.RejectInput);
                 return false;
             }
             return true;

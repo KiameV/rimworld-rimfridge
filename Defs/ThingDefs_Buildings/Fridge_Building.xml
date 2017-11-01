@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Defs>
+<ThingDefs>
+
 	<ThingDef Name="FridgeBase" Abstract="True">
-		<designationCategory>Furniture</designationCategory>
+		<DesignationCategory>Furniture</DesignationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<tradeTags>
 			<li>Furniture</li>
@@ -42,8 +43,7 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<preventDeterioration>true</preventDeterioration>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
@@ -132,8 +132,7 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<preventDeterioration>true</preventDeterioration>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
@@ -193,7 +192,7 @@
 			<li>PlaceWorker_Heater</li>
 		</placeWorkers>
 	</ThingDef>
-
+	
 
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_QuadRefrigerator</defName>
@@ -222,8 +221,7 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<preventDeterioration>true</preventDeterioration>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
 				<filter>
@@ -283,4 +281,4 @@
 			<li>PlaceWorker_Heater</li>
 		</placeWorkers>
 	</ThingDef>
-</Defs>
+</ThingDefs>
