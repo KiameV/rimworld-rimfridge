@@ -58,22 +58,22 @@ namespace RimFridge
         {
             if (!__instance.Ruined)
             {
-                IEnumerable<Thing> things = __instance.parent.Map.thingGrid.ThingsAt(__instance.parent.Position);
+                IEnumerable<Thing> things = __instance.parent?.Map?.thingGrid.ThingsAt(__instance.parent.Position);
                 if (things != null)
                 {
                     foreach (Thing thing in things)
                     {
-                        if (thing.def.defName.StartsWith("RimFridge"))
+                        if (thing?.def.defName.StartsWith("RimFridge") == true)
                         {
                             Building_Refrigerator refridge = (Building_Refrigerator)thing;
                             float ruinedPercent = (float)RuinedPercentFI.GetValue(__instance);
-                            if (refridge.Temp > __instance.Props.maxSafeTemperature)
+                            if (refridge.CurrentTemp > __instance.Props.maxSafeTemperature)
                             {
-                                ruinedPercent += (refridge.Temp - __instance.Props.maxSafeTemperature) *  __instance.Props.progressPerDegreePerTick * (float)ticks;
+                                ruinedPercent += (refridge.CurrentTemp - __instance.Props.maxSafeTemperature) *  __instance.Props.progressPerDegreePerTick * (float)ticks;
                             }
-                            else if (refridge.Temp < __instance.Props.minSafeTemperature)
+                            else if (refridge.CurrentTemp < __instance.Props.minSafeTemperature)
                             {
-                                ruinedPercent -= (refridge.Temp - __instance.Props.minSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
+                                ruinedPercent -= (refridge.CurrentTemp - __instance.Props.minSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
                             }
 
                             if (ruinedPercent >= 1f)

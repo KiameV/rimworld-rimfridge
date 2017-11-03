@@ -67,7 +67,7 @@ namespace RimFridge
                     if (flag4)
                     {
                         Building_Refrigerator building_Refrigerator = thingList[i] as Building_Refrigerator;
-                        num = building_Refrigerator.Temp;
+                        num = building_Refrigerator.CurrentTemp;
                         break;
                     }
                 }
