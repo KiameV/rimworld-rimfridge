@@ -16,7 +16,9 @@ namespace RimFridge
 
         private StorageSettings fixedStorageSettings;
 
-        public float Temp = -3000f;
+        public const float DEFAULT_DESIRED_TEMP = -10f;
+        public float DesiredTemp = DEFAULT_DESIRED_TEMP;
+        public float CurrentTemp = -3000f;
 
         internal string label;
         public override string Label { get { return this.label; } }
@@ -55,7 +57,7 @@ namespace RimFridge
             this.fixedStorageSettings.CopyFrom(this.def.building.fixedStorageSettings);
             foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
             {
-                if (td.HasComp(typeof(CompRottable)) && 
+                if (td.HasComp(typeof(CompRottable)) &&
                     !this.fixedStorageSettings.filter.Allows(td))
                 {
                     this.fixedStorageSettings.filter.SetAllow(td, true);
@@ -71,7 +73,8 @@ namespace RimFridge
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<float>(ref this.Temp, "temp", -3000f, false);
+            Scribe_Values.Look<float>(ref this.CurrentTemp, "temp", -3000f, false);
+            Scribe_Values.Look<float>(ref this.DesiredTemp, "desiredTemp", DEFAULT_DESIRED_TEMP, false);
 
             string label = this.Label;
             if (Scribe.mode == LoadSaveMode.LoadingVars || (Scribe.mode == LoadSaveMode.Saving && this.label != null))
@@ -88,9 +91,9 @@ namespace RimFridge
 
         public override void TickRare()
         {
-            if (this.Temp < -2000f)
+            if (this.CurrentTemp < -2000f)
             {
-                this.Temp = GridsUtility.GetTemperature(base.Position, base.Map);
+                this.CurrentTemp = GridsUtility.GetTemperature(base.Position, base.Map);
             }
             foreach (IntVec3 cell in this.AllSlotCells())
             {
@@ -121,12 +124,12 @@ namespace RimFridge
             }
 
             float roomTemperature = GridsUtility.GetTemperature(base.Position, base.Map);
-            float changetemperature = (roomTemperature - this.Temp) * 0.01f;
+            float changetemperature = (roomTemperature - this.CurrentTemp) * 0.01f;
             float changeEnergy = -changetemperature;
             float powerMultiplier = 0f;
-            if (this.Temp + changetemperature > -10f)
+            if (this.CurrentTemp + changetemperature > this.DesiredTemp)
             {
-                float change = Mathf.Max(-10f - (this.Temp + changetemperature), -1f);
+                float change = Mathf.Max(this.DesiredTemp - (this.CurrentTemp + changetemperature), -1f);
                 if (this.powerComp != null && this.powerComp.PowerOn)
                 {
                     changetemperature += change;
@@ -134,29 +137,115 @@ namespace RimFridge
                 }
                 powerMultiplier = change * -1f;
             }
-            this.Temp += changetemperature;
+            this.CurrentTemp += changetemperature;
             GenTemperature.PushHeat(this, changeEnergy * 1.25f);
             this.powerComp.PowerOutput = -((CompProperties_Power)this.powerComp.props).basePowerConsumption * (powerMultiplier * 0.9f + 0.1f);
         }
 
+        private float RoundedToCurrentTempModeOffset(float celsiusTemp)
+        {
+            float num = GenTemperature.CelsiusToOffset(celsiusTemp, Prefs.TemperatureMode);
+            num = (float)Mathf.RoundToInt(num);
+            return GenTemperature.ConvertTemperatureOffset(num, Prefs.TemperatureMode, TemperatureDisplayMode.Celsius);
+        }
+
+        private void InterfaceChangeTargetTemperature(float offset)
+        {
+            this.DesiredTemp += offset;
+            this.DesiredTemp = Mathf.Clamp(this.DesiredTemp, -270f, 270f);
+            this.ThrowCurrentTemperatureText();
+        }
+
+        private void ThrowCurrentTemperatureText()
+        {
+            MoteMaker.ThrowText(this.TrueCenter() + new Vector3(0.5f, 0f, 0.5f), this.Map, this.DesiredTemp.ToStringTemperature("F0"), Color.white, -1f);
+        }
+
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            List<Gizmo> list = new List<Gizmo>(base.GetGizmos());
-            if (list == null)
-                list = new List<Gizmo>();
+            IEnumerable<Gizmo> gizmos = base.GetGizmos();
+            if (gizmos != null)
+            {
+                foreach (Gizmo g in gizmos)
+                {
+                    yield return g;
+                }
+            }
 
-            Command_Action a = new Command_Action();
-            a.icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true);
-            a.defaultDesc = "RimFridge.RenameTheRefrigerator".Translate();
-            a.defaultLabel = "Rename".Translate();
-            a.activateSound = SoundDef.Named("Click");
-            a.action = delegate { Find.WindowStack.Add(new Dialog_Rename(this)); };
-            a.groupKey = 887767542;
-            list.Add(a);
+            yield return new Command_Action
+            {
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true),
+                defaultDesc = "RimFridge.RenameTheRefrigerator".Translate(),
+                defaultLabel = "Rename".Translate(),
+                activateSound = SoundDef.Named("Click"),
+                action = delegate { Find.WindowStack.Add(new Dialog_Rename(this)); },
+                groupKey = 887767542
+            };
 
-            list = SaveStorageSettingsUtil.SaveStorageSettingsGizmoUtil.AddSaveLoadGizmos(list, "RimFridge", this.settings.filter);
+            float offsetN10 = this.RoundedToCurrentTempModeOffset(-10f);
+            yield return new Command_Action
+            {
+                action = delegate
+                {
+                    this.InterfaceChangeTargetTemperature(offsetN10);
+                },
+                defaultLabel = offsetN10.ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandLowerTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc5,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
+            };
 
-            return list;
+            float offsetN1 = this.RoundedToCurrentTempModeOffset(-1f);
+            yield return new Command_Action
+            {
+                action = delegate
+                {
+                    this.InterfaceChangeTargetTemperature(offsetN1);
+                },
+                defaultLabel = offsetN1.ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandLowerTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc4,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
+            };
+
+            yield return new Command_Action
+            {
+                action = delegate
+                {
+                    this.DesiredTemp = DEFAULT_DESIRED_TEMP;
+                    this.ThrowCurrentTemperatureText();
+                },
+                defaultLabel = "CommandResetTemp".Translate(),
+                defaultDesc = "CommandResetTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc1,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/TempReset", true)
+            };
+
+            float offset1 = this.RoundedToCurrentTempModeOffset(1f);
+            yield return new Command_Action
+            {
+                action = delegate
+                {
+                    this.InterfaceChangeTargetTemperature(offset1);
+                },
+                defaultLabel = "+" + offset1.ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandRaiseTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc2,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
+            };
+
+            float offset10 = this.RoundedToCurrentTempModeOffset(10f);
+            yield return new Command_Action
+            {
+                action = delegate
+                {
+                    this.InterfaceChangeTargetTemperature(offset10);
+                },
+                defaultLabel = "+" + offset10.ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandRaiseTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc3,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
+            };
         }
 
         public override string GetInspectString()
@@ -170,11 +259,11 @@ namespace RimFridge
             }
             sb.Append("RimFridge.TargetTemperature".Translate());
             sb.Append(": ");
-            sb.Append(GenText.ToStringTemperature(-10f, "F0"));
+            sb.Append(GenText.ToStringTemperature(this.DesiredTemp, "F0"));
             sb.Append(Environment.NewLine);
             sb.Append("RimFridge.CurrentTemperature".Translate());
             sb.Append(": ");
-            sb.Append(GenText.ToStringTemperature(this.Temp, "F0"));
+            sb.Append(GenText.ToStringTemperature(this.CurrentTemp, "F0"));
             sb.Append(Environment.NewLine);
             sb.Append("RimFridge.Power".Translate());
             sb.Append(": ");
@@ -183,4 +272,3 @@ namespace RimFridge
         }
     }
 }
-

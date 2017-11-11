@@ -41,7 +41,7 @@ namespace RimFridge
                     if (thingList[i] is Building_Refrigerator)
                     {
                         Building_Refrigerator building_Refrigerator = thingList[i] as Building_Refrigerator;
-                        num2 = building_Refrigerator.Temp;
+                        num2 = building_Refrigerator.CurrentTemp;
                         break;
                     }
                 }
@@ -86,7 +86,7 @@ namespace RimFridge
                     if (list[i] is Building_Refrigerator)
                     {
                         var bf = list[i] as Building_Refrigerator;
-                        temperatureForCell = bf.Temp;
+                        temperatureForCell = bf.CurrentTemp;
                         break;
                     }
                 }
