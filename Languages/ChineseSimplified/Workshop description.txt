@@ -28,7 +28,7 @@ Here for "Buy Me a Coffee" icon
 感谢所有帮助翻译此模组的人士！
 Dragomano - 俄文
 53N4 - 西班牙文
-duduluu - 中文（简体/繁体）
+duduluu & Schr0d - 中文
 phmalu - 葡萄牙文
 Breakyt - 法文
 Ɲơɴɑɱɛ - 德文
@@ -36,3 +36,7 @@ KondenEinenShizainoLaw - 日文
 
 主作者：Vendan
 其他参与者：Xen、historic
+
+最近更新:
+2017-10-31
+-放置于冰箱中的受精卵将损坏
