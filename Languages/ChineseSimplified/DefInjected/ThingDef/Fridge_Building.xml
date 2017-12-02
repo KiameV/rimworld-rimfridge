@@ -6,12 +6,21 @@
   <RimFridge_Refrigerator_Blueprint.label>冰箱（蓝图）</RimFridge_Refrigerator_Blueprint.label>
   <RimFridge_Refrigerator_Blueprint_Install.label>冰箱（蓝图）</RimFridge_Refrigerator_Blueprint_Install.label>
   <RimFridge_Refrigerator_Frame.label>冰箱（建造中）</RimFridge_Refrigerator_Frame.label>
+  <RimFridge_Refrigerator_Frame.description>食物放在里面不会腐坏。</RimFridge_Refrigerator_Frame.description>
 
   <RimFridge_SingleRefrigerator.label>小冰箱</RimFridge_SingleRefrigerator.label>
   <RimFridge_SingleRefrigerator.description>食物放在里面不会腐坏。</RimFridge_SingleRefrigerator.description>
   <RimFridge_SingleRefrigerator_Blueprint.label>小冰箱（蓝图）</RimFridge_SingleRefrigerator_Blueprint.label>
   <RimFridge_SingleRefrigerator_Blueprint_Install.label>小冰箱（蓝图）</RimFridge_SingleRefrigerator_Blueprint_Install.label>
   <RimFridge_SingleRefrigerator_Frame.label>小冰箱（建造中）</RimFridge_SingleRefrigerator_Frame.label>
+  <RimFridge_SingleRefrigerator_Frame.description>食物放在里面不会腐坏。</RimFridge_SingleRefrigerator_Frame.description>
 
-  <RimFridge_QuadRefrigerator.label>大冰箱</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.label>大冰箱</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>食物放在里面不会腐坏。</RimFridge_QuadRefrigerator.description>
+  <RimFridge_QuadRefrigerator_Blueprint.label>大冰箱（蓝图）</RimFridge_QuadRefrigerator_Blueprint.label>
+  <RimFridge_QuadRefrigerator_Blueprint_Install.label>大冰箱（蓝图）</RimFridge_QuadRefrigerator_Blueprint_Install.label>
+  <RimFridge_QuadRefrigerator_Frame.label>大冰箱（建造中）</RimFridge_QuadRefrigerator_Frame.label>
+  <RimFridge_QuadRefrigerator_Frame.description>食物放在里面不会腐坏。</RimFridge_QuadRefrigerator_Frame.description>
+
+
 </LanguageData>

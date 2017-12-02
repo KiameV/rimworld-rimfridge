@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <RimFridge.TargetTemperature>目前溫度</RimFridge.TargetTemperature>
-  <RimFridge.CurrentTemperature>當前溫度</RimFridge.CurrentTemperature>
-  <RimFridge.Power>功率</RimFridge.Power>
+  <RimFridge.CurrentTemperature>當前溫度</RimFridge.CurrentTemperature>
+  <RimFridge.Power>功率</RimFridge.Power>
+  <RimFridge.RenameTheRefrigerator>重命名此冰箱</RimFridge.RenameTheRefrigerator>
 
 </LanguageData>
