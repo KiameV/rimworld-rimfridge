@@ -67,6 +67,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)..\About\About.xml" "$(OutDir)..\About\" /Y /I
+xcopy "$(ProjectDir)..\About\ModSync.xml" "$(OutDir)..\About\" /Y /I
 xcopy "$(ProjectDir)..\About\Preview.png" "$(OutDir)..\About\" /Y /I
 xcopy "$(ProjectDir)..\About\PublishedFileId.txt" "$(OutDir)..\About\" /Y /I
 xcopy "$(ProjectDir)..\Defs\*.*" "$(OutDir)..\Defs" /Y /I /E

@@ -13,7 +13,7 @@
   <RimFridge_SingleRefrigerator_Blueprint_Install.label>小冷蔵庫(設計)</RimFridge_SingleRefrigerator_Blueprint_Install.label>
   <RimFridge_SingleRefrigerator_Frame.label>小冷蔵庫(施工)</RimFridge_SingleRefrigerator_Frame.label>
 
-  <RimFridge_QuadRefrigerator.label>大冷蔵庫</RimFridge_SingleRefrigerator.label>
+  <RimFridge_QuadRefrigerator.label>大冷蔵庫</RimFridge_QuadRefrigerator.label>
   <RimFridge_QuadRefrigerator.description>大量に保存できる大きな冷蔵庫。この中に保管された食料は腐りません。</RimFridge_QuadRefrigerator.description>
   <RimFridge_QuadRefrigerator_Blueprint.label>大冷蔵庫(設計)</RimFridge_QuadRefrigerator_Blueprint.label>
   <RimFridge_QuadRefrigerator_Blueprint_Install.label>大冷蔵庫(設計)</RimFridge_QuadRefrigerator_Blueprint_Install.label>

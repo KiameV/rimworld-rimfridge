@@ -69,7 +69,7 @@ namespace RimFridge
                             float ruinedPercent = (float)RuinedPercentFI.GetValue(__instance);
                             if (refridge.CurrentTemp > __instance.Props.maxSafeTemperature)
                             {
-                                ruinedPercent += (refridge.CurrentTemp - __instance.Props.maxSafeTemperature) *  __instance.Props.progressPerDegreePerTick * (float)ticks;
+                                ruinedPercent += (refridge.CurrentTemp - __instance.Props.maxSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
                             }
                             else if (refridge.CurrentTemp < __instance.Props.minSafeTemperature)
                             {
