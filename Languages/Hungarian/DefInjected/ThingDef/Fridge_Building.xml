@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_Refrigerator.label>Fagyasztó</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>AZ ételek ebbe a hűtőbe tárolva nem romlanak.</RimFridge_Refrigerator.description>
+
+  <RimFridge_SingleRefrigerator.label>Kis Fagyasztó</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>AZ ételek ebbe a hűtőbe tárolva nem romlanak.</RimFridge_SingleRefrigerator.description>
+
+  <RimFridge_QuadRefrigerator.label>Nagy Fagasztó</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>AZ ételek ebbe a hűtőbe tárolva nem romlanak.</RimFridge_QuadRefrigerator.description>
+
+
+</LanguageData>
