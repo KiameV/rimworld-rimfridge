@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_Refrigerator.label>Chłodziarka</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>Łatwo psujące się towary nie gniją w tej chłodziarce</RimFridge_Refrigerator.description>
+
+  <RimFridge_SingleRefrigerator.label>Mała chłodziarka</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>Łatwo psujące się towary nie gniją w tej małej chłodziarce</RimFridge_SingleRefrigerator.description>
+
+  <RimFridge_QuadRefrigerator.label>Duża chłodziarka</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>Łatwo psujące się towary nie gniją w tej dużej chłodziarce</RimFridge_QuadRefrigerator.description>
+
+
+</LanguageData>
