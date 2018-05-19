@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<RimFridge.TargetTemperature>Temperatura desejada</RimFridge.TargetTemperature>
+	<RimFridge.CurrentTemperature>Temperatura atual</RimFridge.CurrentTemperature>
+	<RimFridge.Power>Energia</RimFridge.Power>
+
+</LanguageData>

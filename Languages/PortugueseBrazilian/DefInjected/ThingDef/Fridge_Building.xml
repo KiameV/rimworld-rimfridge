@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<RimFridge_Refrigerator.label>Geladeira (2x1)</RimFridge_Refrigerator.label>
+
+	<RimFridge_Refrigerator.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_Refrigerator.description>
+
+	<RimFridge_SingleRefrigerator.label>Minibar (1x1)</RimFridge_SingleRefrigerator.label>
+
+	<RimFridge_SingleRefrigerator.description>Um pequeno refrigerador para guardar comida e outras coisas.</RimFridge_SingleRefrigerator.description>
+
+	<RimFridge_QuadRefrigerator.label>Refrigerador quadrado (2x2)</RimFridge_QuadRefrigerator.label>
+
+	<RimFridge_QuadRefrigerator.description>Um grande frizer para armazenar e congelar alimentos</RimFridge_QuadRefrigerator.description>
+
+</LanguageData>
