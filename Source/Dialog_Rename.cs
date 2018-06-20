@@ -28,7 +28,7 @@ namespace RimFridge
         {
             this.forcePause = true;
             this.doCloseX = true;
-            this.closeOnEscapeKey = true;
+            this.closeOnClickedOutside = true;
             this.absorbInputAroundWindow = true;
             this.closeOnClickedOutside = true;
             this.fridge = fridge;

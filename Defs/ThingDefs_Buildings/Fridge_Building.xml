@@ -2,7 +2,7 @@
 <Defs>
 	<ThingDef Name="FridgeBase" Abstract="True">
 		<designationCategory>Furniture</designationCategory>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<minifiedDef>MinifiedThing</minifiedDef>
 		<tradeTags>
 			<li>Furniture</li>
 		</tradeTags>
@@ -12,7 +12,10 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="FridgeBase">
@@ -30,9 +33,10 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<costList>
 			<Steel>40</Steel>
-			<Component>1</Component>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
+			<Mass>30</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1050</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -120,9 +124,10 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<costList>
 			<Steel>20</Steel>
-			<Component>1</Component>
+			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
+			<Mass>15</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1050</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -210,10 +215,11 @@
 		<fillPercent>0.4</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
 		<costList>
-			<Steel>80</Steel>
-			<Component>2</Component>
+			<Steel>60</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
 		<statBases>
+			<Mass>70</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1800</WorkToBuild>
 			<Flammability>1.0</Flammability>

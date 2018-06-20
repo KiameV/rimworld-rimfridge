@@ -8,7 +8,7 @@ namespace RimFridge
 {
     public class CompBetterRottable : CompRottable
     {
-        private CompProperties_Rottable PropsRot
+        private new CompProperties_Rottable PropsRot
         {
             get
             {
@@ -58,14 +58,14 @@ namespace RimFridge
                     {
                         sb.Append(Translator.Translate("CurrentlyRefrigerated", new object[]
                         {
-                            GenDate.ToStringTicksToPeriodVagueMax(ticksUntilRotAtCurrentTemp)
+                            GenDate.ToStringTicksToPeriodVague(ticksUntilRotAtCurrentTemp)
                         }) + ".");
                     }
                     else
                     {
                         sb.Append(Translator.Translate("NotRefrigerated", new object[]
                         {
-                            GenDate.ToStringTicksToPeriodVagueMax(ticksUntilRotAtCurrentTemp)
+                            GenDate.ToStringTicksToPeriodVague(ticksUntilRotAtCurrentTemp)
                         }) + ".");
                     }
                 }
@@ -95,7 +95,7 @@ namespace RimFridge
                 this.RotProgress += Mathf.Round(num * 250f);
                 if (this.Stage == RotStage.Rotting && this.PropsRot.rotDestroys)
                 {
-                    if (this.parent.Map.slotGroupManager.SlotGroupAt(this.parent.Position) != null)
+                    if (this.parent.IsInAnyStorage() && this.parent.SpawnedOrAnyParentSpawned)
                     {
                         Messages.Message("MessageRottedAwayInStorage".Translate(new object[]
                         {

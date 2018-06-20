@@ -4,9 +4,9 @@ namespace RimFridge
 {
     internal class CompProperties_SecondLayer : CompProperties
     {
-        public GraphicData graphicData;
+        public GraphicData graphicData = null;
 
-        public AltitudeLayer altitudeLayer;
+        public AltitudeLayer altitudeLayer = AltitudeLayer.MoteOverhead;
 
         public float Altitude
         {
