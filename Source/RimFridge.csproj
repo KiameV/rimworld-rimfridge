@@ -60,7 +60,7 @@
     <Compile Include="Dialog_Rename.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\FloatInput.cs" />
-    <Compile Include="Main.cs" />
+    <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Settings\RimFridgeSettingsUtil.cs" />
     <Compile Include="Settings\Settings.cs" />
   </ItemGroup>
