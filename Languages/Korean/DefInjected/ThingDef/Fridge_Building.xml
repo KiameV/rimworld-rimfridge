@@ -1,13 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<RimFridge_Refrigerator.label>냉장고</RimFridge_Refrigerator.label>
-	<RimFridge_Refrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator.label>냉장고</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator_Blueprint.label>냉장고 (청사진)</RimFridge_Refrigerator_Blueprint.label>
+  <RimFridge_Refrigerator_Blueprint_Install.label>냉장고 (청사진)</RimFridge_Refrigerator_Blueprint_Install.label>
+  <RimFridge_Refrigerator_Frame.label>냉장고 (건설중)</RimFridge_Refrigerator_Frame.label>
+  <RimFridge_Refrigerator_Frame.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_Refrigerator_Frame.description>
 
-	<RimFridge_SingleRefrigerator.label>한칸 냉장고</RimFridge_SingleRefrigerator.label>
-	<RimFridge_SingleRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator.label>한칸 냉장고</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator_Blueprint.label>한칸 냉장고 (청사진)</RimFridge_SingleRefrigerator_Blueprint.label>
+  <RimFridge_SingleRefrigerator_Blueprint_Install.label>한칸 냉장고 (청사진)</RimFridge_SingleRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleRefrigerator_Frame.label>한칸 냉장고 (건설중)</RimFridge_SingleRefrigerator_Frame.label>
+  <RimFridge_SingleRefrigerator_Frame.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_SingleRefrigerator_Frame.description>
 
-	<RimFridge_QuadRefrigerator.label>네칸 냉장고</RimFridge_QuadRefrigerator.label>
-	<RimFridge_QuadRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_QuadRefrigerator.description>
+  <RimFridge_QuadRefrigerator.label>네칸 냉장고</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_QuadRefrigerator.description>
+  <RimFridge_QuadRefrigerator_Blueprint.label>네칸 냉장고 (청사진)</RimFridge_QuadRefrigerator_Blueprint.label>
+  <RimFridge_QuadRefrigerator_Blueprint_Install.label>네칸 냉장고 (청사진)</RimFridge_QuadRefrigerator_Blueprint_Install.label>
+  <RimFridge_QuadRefrigerator_Frame.label>네칸 냉장고 (건설중)</RimFridge_QuadRefrigerator_Frame.label>
+  <RimFridge_QuadRefrigerator_Frame.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_QuadRefrigerator_Frame.description>
+
 
 </LanguageData>
