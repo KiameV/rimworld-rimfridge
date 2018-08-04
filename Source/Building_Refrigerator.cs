@@ -138,7 +138,8 @@ namespace RimFridge
                 powerMultiplier = change * -1f;
             }
             this.CurrentTemp += changetemperature;
-            GenTemperature.PushHeat(this, changeEnergy * 1.25f);
+            IntVec3 pos = base.Position + IntVec3.North.RotatedBy(base.Rotation);
+            GenTemperature.PushHeat(pos, base.Map, changeEnergy * 1.25f);
             this.powerComp.PowerOutput = -((CompProperties_Power)this.powerComp.props).basePowerConsumption * (powerMultiplier * 0.9f + 0.1f);
         }
 
