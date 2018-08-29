@@ -2,12 +2,12 @@
 <Defs>
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_WallRefrigerator</defName>
-		<label>Wall Refrigerator</label>
+		<label>Wall Dual Refrigerator</label>
 		<thingClass>RimFridge.Building_Refrigerator</thingClass>
 		<graphicData>
-			<texPath>Building/Temperature/Fridge/DualFridge</texPath>
+			<texPath>Building/Temperature/Fridge/WallDualFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(4,3)</drawSize>
+			<drawSize>(2,1)</drawSize>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
@@ -74,10 +74,10 @@
 			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
-					<texPath>Building/Temperature/Fridge/DualFridgeLid</texPath>
+					<texPath>Building/Temperature/Fridge/WallDualFridgeLid</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<shaderType>Transparent</shaderType>
-					<drawSize>(4,3)</drawSize>
+					<drawSize>(2,1)</drawSize>
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>
@@ -102,9 +102,9 @@
 		<label>Single Wall Refrigerator</label>
 		<thingClass>RimFridge.Building_Refrigerator</thingClass>
 		<graphicData>
-			<texPath>Building/Temperature/Fridge/SingleFridge</texPath>
+			<texPath>Building/Temperature/Fridge/WallSingleFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3, 3)</drawSize>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
@@ -171,10 +171,10 @@
 			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
-					<texPath>Building/Temperature/Fridge/SingleFridgeLid</texPath>
+					<texPath>Building/Temperature/Fridge/WallSingleFridgeLid</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<shaderType>Transparent</shaderType>
-					<drawSize>(3,3)</drawSize>
+					<drawSize>(1,1)</drawSize>
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>

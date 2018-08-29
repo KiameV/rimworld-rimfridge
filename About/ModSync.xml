@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModSyncNinjaData>
-  <ID>a2acc0d3-591f-4f53-baf8-5e2997650d25</ID>
   <ModName>RimFridge</ModName>
-  <Version>1.0.0.3</Version>
+  <Version>0.19.0.1</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>KiameV</Owner>

@@ -20,7 +20,7 @@
 
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_Refrigerator</defName>
-		<label>Refrigerator</label>
+		<label>Dual Refrigerator</label>
 		<thingClass>RimFridge.Building_Refrigerator</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/DualFridge</texPath>
