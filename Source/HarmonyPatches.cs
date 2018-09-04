@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Verse;
+using Verse.AI;
 
 namespace RimFridge
 {
@@ -16,9 +17,10 @@ namespace RimFridge
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             Log.Message(
-                "ChangeDresser Harmony Patches:" + Environment.NewLine +
+                "RimFridge Harmony Patches:" + Environment.NewLine +
                 "  Prefix:" + Environment.NewLine +
                 "    CompTemperatureRuinable.DoTicks - Will return false if within a RimFridge" + Environment.NewLine +
+                "    ReachabilityUtility.CanReach" + Environment.NewLine +
                 "  Postfix:" + Environment.NewLine +
                 "    GameComponentUtility.StartedNewGame" + Environment.NewLine +
                 "    GameComponentUtility.LoadedGame");
@@ -92,6 +94,28 @@ namespace RimFridge
                             RuinedPercentFI.SetValue(__instance, ruinedPercent);
                             return false;
                         }
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(ReachabilityUtility), "CanReach")]
+    static class Patch_ReachabilityUtility_CanReach
+    {
+        static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBash, TraverseMode mode)
+        {
+            if (dest != null && dest.Thing != null && dest.Thing.def.category == ThingCategory.Item)
+            {
+                foreach (Thing t in Current.Game.CurrentMap.thingGrid.ThingsAt(dest.Thing.Position))
+                {
+                    if (t.def.defName.StartsWith("RimFridge_"))
+                    {
+                        Log.Warning(dest.Thing.def.defName);
+                        peMode = PathEndMode.Touch;
+                        __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
+                        return false;
                     }
                 }
             }
