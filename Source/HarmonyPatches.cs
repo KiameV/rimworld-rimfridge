@@ -112,7 +112,6 @@ namespace RimFridge
                 {
                     if (t.def.defName.StartsWith("RimFridge_"))
                     {
-                        Log.Warning(dest.Thing.def.defName);
                         peMode = PathEndMode.Touch;
                         __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
                         return false;

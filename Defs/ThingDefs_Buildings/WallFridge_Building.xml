@@ -33,32 +33,6 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
-			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>AnimalProductRaw</li>
-						<li>Corpses</li>
-						<li>Drugs</li>
-						<li>EggsFertilized</li>
-						<li>EggsUnfertilized</li>
-						<li>Foods</li>
-						<li>Medicine</li>
-						<li>PlantMatter</li>
-						<li>PlantFoodRaw</li>
-					</categories>
-				</filter>
-			</fixedStorageSettings>
-			<defaultStorageSettings>
-				<priority>Important</priority>
-				<filter>
-					<categories>
-						<li>FoodMeals</li>
-					</categories>
-				</filter>
-			</defaultStorageSettings>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
@@ -130,32 +104,6 @@
 			<li>AirConditioning</li>
 		</researchPrerequisites>	
 		<building>
-			<preventDeteriorationInside>true</preventDeteriorationInside>
-			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
-			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>AnimalProductRaw</li>
-						<li>Corpses</li>
-						<li>Drugs</li>
-						<li>EggsFertilized</li>
-						<li>EggsUnfertilized</li>
-						<li>Foods</li>
-						<li>Medicine</li>
-						<li>PlantMatter</li>
-						<li>PlantFoodRaw</li>
-					</categories>
-				</filter>
-			</fixedStorageSettings>
-			<defaultStorageSettings>
-				<priority>Important</priority>
-				<filter>
-					<categories>
-						<li>FoodMeals</li>
-					</categories>
-				</filter>
-			</defaultStorageSettings>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>

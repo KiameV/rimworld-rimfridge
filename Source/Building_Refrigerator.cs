@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using System.Collections.Generic;
+using SaveStorageSettingsUtil;
 
 namespace RimFridge
 {
@@ -31,6 +32,30 @@ namespace RimFridge
             if (this.label == null || this.label.Trim().Length == 0)
                 this.label = base.def.label;
         }
+
+        /*public void ListSpec(ThingFilter f)
+        {
+            Log.Warning("    Spec Def");
+            foreach (SpecialThingFilterDef def in 
+                (List<SpecialThingFilterDef>)typeof(ThingFilter).GetField("disallowedSpecialFilters", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(f))
+            {
+                Log.Warning("        " + def.defName);
+            }
+
+            Log.Warning("    specialFiltersToAllow");
+            foreach (string s in
+                (List<string>)typeof(ThingFilter).GetField("specialFiltersToAllow", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(f))
+            {
+                Log.Warning("        " + s);
+            }
+
+            Log.Warning("    specialFiltersToDisallow");
+            foreach (string s in
+                (List<string>)typeof(ThingFilter).GetField("specialFiltersToDisallow", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(f))
+            {
+                Log.Warning("        " + s);
+            }
+        }*/
 
         public override void PostMake()
         {
@@ -164,16 +189,9 @@ namespace RimFridge
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            IEnumerable<Gizmo> gizmos = base.GetGizmos();
-            if (gizmos != null)
-            {
-                foreach (Gizmo g in gizmos)
-                {
-                    yield return g;
-                }
-            }
+            List<Gizmo> gizmos = new List<Gizmo>(base.GetGizmos());
 
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true),
                 defaultDesc = "RimFridge.RenameTheRefrigerator".Translate(),
@@ -181,10 +199,10 @@ namespace RimFridge
                 activateSound = SoundDef.Named("Click"),
                 action = delegate { Find.WindowStack.Add(new Dialog_Rename(this)); },
                 groupKey = 887767542
-            };
+            });
             
             float offsetN10 = this.RoundedToCurrentTempModeOffset(-10f);
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 action = delegate
                 {
@@ -194,10 +212,10 @@ namespace RimFridge
                 defaultDesc = "CommandLowerTempDesc".Translate(),
                 hotKey = KeyBindingDefOf.Misc5,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
-            };
+            });
 
             float offsetN1 = this.RoundedToCurrentTempModeOffset(-1f);
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 action = delegate
                 {
@@ -207,9 +225,9 @@ namespace RimFridge
                 defaultDesc = "CommandLowerTempDesc".Translate(),
                 hotKey = KeyBindingDefOf.Misc4,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
-            };
+            });
 
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 action = delegate
                 {
@@ -220,10 +238,10 @@ namespace RimFridge
                 defaultDesc = "CommandResetTempDesc".Translate(),
                 hotKey = KeyBindingDefOf.Misc1,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempReset", true)
-            };
+            });
 
             float offset1 = this.RoundedToCurrentTempModeOffset(1f);
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 action = delegate
                 {
@@ -233,10 +251,10 @@ namespace RimFridge
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
                 hotKey = KeyBindingDefOf.Misc2,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
-            };
+            });
 
             float offset10 = this.RoundedToCurrentTempModeOffset(10f);
-            yield return new Command_Action
+            gizmos.Add(new Command_Action
             {
                 action = delegate
                 {
@@ -246,7 +264,10 @@ namespace RimFridge
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
                 hotKey = KeyBindingDefOf.Misc3,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
-            };
+            });
+
+            return SaveStorageSettingsGizmoUtil.AddSaveLoadGizmos(
+                gizmos, SaveTypeEnum.Zone_Stockpile, this.settings.filter);
         }
 
         public override string GetInspectString()
