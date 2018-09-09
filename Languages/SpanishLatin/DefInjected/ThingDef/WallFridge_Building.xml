@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<RimFridge_WallRefrigerator.label>Refrigerador-Muro doble</RimFridge_WallRefrigerator.label>
+	<RimFridge_WallRefrigerator.description>Las cosas perecederas almacenadas aquí no se deteriorarán.</RimFridge_WallRefrigerator.description>
+
+	<RimFridge_SingleWallRefrigerator.label>Refrigerador-Muro</RimFridge_SingleWallRefrigerator.label>
+	<RimFridge_SingleWallRefrigerator.description>Las cosas perecederas almacenadas aquí no se deteriorarán.</RimFridge_SingleWallRefrigerator.description>
+
+</LanguageData>

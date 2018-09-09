@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<RimFridge_Refrigerator.label>Nevera</RimFridge_Refrigerator.label>
-	<RimFridge_Refrigerator.description>Las cosas perecederas almacenadas aquí no se estropean.</RimFridge_Refrigerator.description>
+	<RimFridge_Refrigerator.label>Refrigerador doble</RimFridge_Refrigerator.label>
+	<RimFridge_Refrigerator.description>Las cosas perecederas almacenadas aquí no se deteriorarán.</RimFridge_Refrigerator.description>
 
-	<RimFridge_SingleRefrigerator.label>Minibar</RimFridge_SingleRefrigerator.label>
-	<RimFridge_SingleRefrigerator.description>Las cosas perecederas almacenadas aquí no se estropean.</RimFridge_SingleRefrigerator.description>
+	<RimFridge_SingleRefrigerator.label>Refrigerador</RimFridge_SingleRefrigerator.label>
+	<RimFridge_SingleRefrigerator.description>Las cosas perecederas almacenadas aquí no se deteriorarán.</RimFridge_SingleRefrigerator.description>
+
+	<RimFridge_QuadRefrigerator.label>Refrigerador cuadruple</RimFridge_QuadRefrigerator.label>
+	<RimFridge_QuadRefrigerator.description>Las cosas perecederas almacenadas aquí no se deteriorarán.</RimFridge_QuadRefrigerator.description>
 
 </LanguageData>
