@@ -121,4 +121,38 @@ namespace RimFridge
             return true;
         }
     }
+
+    [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
+    static class Patch_PassingShip_TryOpenComms
+    {
+        // Before an orbital trade
+        static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
+        {
+            if (playerNegotiator != null && playerNegotiator.Map != null)
+            {
+                if (playerNegotiator.Map != null)
+                {
+                    List<Thing> result = null;
+                    foreach (Thing t in playerNegotiator.Map.listerThings.AllThings)
+                    {
+                        if (t is Building_Refrigerator && t.def.defName.IndexOf("Wall") != -1)
+                        {
+                            foreach (Thing f in playerNegotiator.Map.thingGrid.ThingsAt(t.Position))
+                            {
+                                if (((Building_Refrigerator)t).settings.AllowedToAccept(f))
+                                {
+                                    if (result == null)
+                                        result = new List<Thing>(__result);
+                                    result.Add(f);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (result != null)
+                        __result = result;
+                }
+            }
+        }
+    }
 }
