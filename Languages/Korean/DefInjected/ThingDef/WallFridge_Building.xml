@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_WallRefrigerator.label>벽식 냉장고</RimFridge_WallRefrigerator.label>
+  <RimFridge_WallRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_WallRefrigerator.description>
+  <RimFridge_WallRefrigerator_청사진.label>벽식 냉장고 (청사진)</RimFridge_WallRefrigerator_청사진.label>
+  <RimFridge_WallRefrigerator_청사진_Install.label>벽식 냉장고 (청사진)</RimFridge_WallRefrigerator_청사진_Install.label>
+  <RimFridge_WallRefrigerator_Frame.label>벽식 냉장고 (건설중)</RimFridge_WallRefrigerator_Frame.label>
+  <RimFridge_WallRefrigerator_Frame.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_WallRefrigerator_Frame.description>
+
+  <RimFridge_SingleWallRefrigerator.label>한칸 벽식 냉장고</RimFridge_SingleWallRefrigerator.label>
+  <RimFridge_SingleWallRefrigerator.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_SingleWallRefrigerator.description>
+  <RimFridge_SingleWallRefrigerator_청사진.label>한칸 벽식 냉장고 (청사진)</RimFridge_SingleWallRefrigerator_청사진.label>
+  <RimFridge_SingleWallRefrigerator_청사진_Install.label>한칸 벽식 냉장고 (청사진)</RimFridge_SingleWallRefrigerator_청사진_Install.label>
+  <RimFridge_SingleWallRefrigerator_Frame.label>한칸 벽식 냉장고 (건설중)</RimFridge_SingleWallRefrigerator_Frame.label>
+  <RimFridge_SingleWallRefrigerator_Frame.description>부패할 수 있는 것들이 이 안에 보관되면 썩지 않을 것입니다.</RimFridge_SingleWallRefrigerator_Frame.description>
+
+
+</LanguageData>
