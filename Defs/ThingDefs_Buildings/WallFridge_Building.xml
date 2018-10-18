@@ -73,7 +73,7 @@
 
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_SingleWallRefrigerator</defName>
-		<label>Single Wall Refrigerator</label>
+		<label>Wall Single Refrigerator</label>
 		<thingClass>RimFridge.Building_Refrigerator</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/WallSingleFridge</texPath>
