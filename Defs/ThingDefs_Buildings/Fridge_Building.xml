@@ -41,6 +41,9 @@
 					<categories>
 						<li>FoodMeals</li>
 					</categories>
+					<disallowedThingDefs>
+						<li>MealSurvivalPack</li>
+					</disallowedThingDefs>
 				</filter>
 			</defaultStorageSettings>
 		</building>
