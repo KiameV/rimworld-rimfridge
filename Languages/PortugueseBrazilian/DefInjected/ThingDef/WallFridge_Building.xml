@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_WallRefrigerator.label>Geladeira de parede (2x1)</RimFridge_WallRefrigerator.label>
+  <RimFridge_WallRefrigerator.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_WallRefrigerator.description>
+  <RimFridge_WallRefrigerator_Blueprint.label>Geladeira de parede (2x1) (blueprint)</RimFridge_WallRefrigerator_Blueprint.label>
+  <RimFridge_WallRefrigerator_Blueprint_Install.label>Geladeira de parede (2x1) (blueprint)</RimFridge_WallRefrigerator_Blueprint_Install.label>
+  <RimFridge_WallRefrigerator_Frame.label>Geladeira de parede (2x1) (construção)</RimFridge_WallRefrigerator_Frame.label>
+  <RimFridge_WallRefrigerator_Frame.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_WallRefrigerator_Frame.description>
+
+  <RimFridge_SingleWallRefrigerator.label>Minibar de parede (1x1)</RimFridge_SingleWallRefrigerator.label>
+  <RimFridge_SingleWallRefrigerator.description>Um pequeno refrigerador para guardar comida e outras coisas.</RimFridge_SingleWallRefrigerator.description>
+  <RimFridge_SingleWallRefrigerator_Blueprint.label>Minibar de parede (1x1) (blueprint)</RimFridge_SingleWallRefrigerator_Blueprint.label>
+  <RimFridge_SingleWallRefrigerator_Blueprint_Install.label>Minibar de parede (1x1) (blueprint)</RimFridge_SingleWallRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleWallRefrigerator_Frame.label>Minibar de parede (1x1) (construção)</RimFridge_SingleWallRefrigerator_Frame.label>
+  <RimFridge_SingleWallRefrigerator_Frame.description>Um pequeno refrigerador para guardar comida e outras coisas</RimFridge_SingleWallRefrigerator_Frame.description>
+
+
+</LanguageData>
