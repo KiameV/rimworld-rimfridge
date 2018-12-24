@@ -18,17 +18,17 @@ namespace RimFridge
 
         public override string CompInspectStringExtra()
         {
-            StringBuilder sb = new StringBuilder();
+            List<string> props = new List<string>();
             switch (base.Stage)
             {
                 case RotStage.Fresh:
-                    sb.Append("RotStateFresh".Translate());
+                    props.Add("RotStateFresh".Translate());
                     break;
                 case RotStage.Rotting:
-                    sb.Append("RotStateRotting".Translate());
+                    props.Add("RotStateRotting".Translate());
                     break;
                 case RotStage.Dessicated:
-                    sb.Append("RotStateDessicated".Translate());
+                    props.Add("RotStateDessicated".Translate());
                     break;
             }
             float num = (float)this.PropsRot.TicksToRotStart - base.RotProgress;
@@ -50,27 +50,27 @@ namespace RimFridge
                 int ticksUntilRotAtCurrentTemp = base.TicksUntilRotAtCurrentTemp;
                 if (num3 < 0.001f)
                 {
-                    sb.Append(Translator.Translate("CurrentlyFrozen") + ".");
+                    props.Add(Translator.Translate("CurrentlyFrozen") + ".");
                 }
                 else
                 {
                     if (num3 < 0.999f)
                     {
-                        sb.Append(Translator.Translate("CurrentlyRefrigerated", new object[]
+                        props.Add(Translator.Translate("CurrentlyRefrigerated", new object[]
                         {
                             GenDate.ToStringTicksToPeriodVague(ticksUntilRotAtCurrentTemp)
-                        }) + ".");
+                        }));
                     }
                     else
                     {
-                        sb.Append(Translator.Translate("NotRefrigerated", new object[]
+                        props.Add(Translator.Translate("NotRefrigerated", new object[]
                         {
                             GenDate.ToStringTicksToPeriodVague(ticksUntilRotAtCurrentTemp)
-                        }) + ".");
+                        }));
                     }
                 }
             }
-            return sb.ToString().TrimEndNewlines();
+            return string.Join(".\n", props.ToArray());
         }
 
         public override void CompTickRare()
