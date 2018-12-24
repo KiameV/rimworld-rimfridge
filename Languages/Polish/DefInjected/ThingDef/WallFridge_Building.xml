@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<RimFridge_WallRefrigerator.label>Chłodziarka w ścianie</RimFridge_WallRefrigerator.label>
+	<RimFridge_WallRefrigerator.description>Łatwo psujące się towary nie gniją w tej chłodziarce</RimFridge_WallRefrigerator.description>
+
+	<RimFridge_SingleWallRefrigerator.label>Mała chłodziarka w ścianie</RimFridge_SingleWallRefrigerator.label>
+	<RimFridge_SingleWallRefrigerator.description>Łatwo psujące się towary nie gniją w tej małej chłodziarce</RimFridge_SingleWallRefrigerator.description>
+
+</LanguageData>
