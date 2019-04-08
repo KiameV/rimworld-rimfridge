@@ -22,13 +22,13 @@ namespace RimFridge
             switch (base.Stage)
             {
                 case RotStage.Fresh:
-                    sb.Append("RotStateFresh".Translate());
+                    sb.Append("RotStateFresh".Translate() + ".\n");
                     break;
                 case RotStage.Rotting:
-                    sb.Append("RotStateRotting".Translate());
+                    sb.Append("RotStateRotting".Translate() + ".\n");
                     break;
                 case RotStage.Dessicated:
-                    sb.Append("RotStateDessicated".Translate());
+                    sb.Append("RotStateDessicated".Translate() + ".\n");
                     break;
             }
             float num = (float)this.PropsRot.TicksToRotStart - base.RotProgress;
