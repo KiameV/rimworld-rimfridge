@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <RimFridge.TargetTemperature>Желаемая температура</RimFridge.TargetTemperature>
+  <RimFridge.TargetTemperature>Целевая температура</RimFridge.TargetTemperature>
   <RimFridge.CurrentTemperature>Текущая температура</RimFridge.CurrentTemperature>
   <RimFridge.Power>Питание</RimFridge.Power>
-
+  <RimFridge.RenameTheRefrigerator>Переименовать склад</RimFridge.RenameTheRefrigerator>
 </LanguageData>
