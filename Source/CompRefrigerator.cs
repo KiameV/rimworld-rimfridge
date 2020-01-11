@@ -199,9 +199,9 @@ namespace RimFridge
             Scribe_Values.Look(ref desiredTemp, "desiredTemp", defaultDesiredTemperature, false);
 
             string label = parent.Label;
-            if (Scribe.mode == LoadSaveMode.LoadingVars || (Scribe.mode == LoadSaveMode.Saving && parent.Label != null))
+            if (Scribe.mode == LoadSaveMode.LoadingVars || (Scribe.mode == LoadSaveMode.Saving && buildingLabel != null))
             {
-                Scribe_Values.Look(ref label, "label", parent.def.label, false);
+                Scribe_Values.Look(ref buildingLabel, "buildingLabel", "", false);
             }
 
             if (Scribe.mode == LoadSaveMode.LoadingVars)
