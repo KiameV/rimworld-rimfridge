@@ -16,7 +16,6 @@ On Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=1180721235
 
 In the Ludeon Forum: https://ludeon.com/forums/index.php?topic=32980.0
 
-
 Thanks to everyone who's helped translate this mod!
 Dragomano &amp; qeqwrqweqweter - Russian
 53N4 - Spanish
