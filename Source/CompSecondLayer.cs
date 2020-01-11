@@ -7,35 +7,29 @@ namespace RimFridge
     {
         private Graphic graphicInt;
 
-        public CompProperties_SecondLayer Props
-        {
-            get
-            {
-                return (CompProperties_SecondLayer)this.props;
-            }
-        }
+        public CompProperties_SecondLayer Props => (CompProperties_SecondLayer)props;
 
         public virtual Graphic Graphic
         {
             get
             {
-                if (this.graphicInt == null)
+                if (graphicInt == null)
                 {
-                    if (this.Props.graphicData == null)
+                    if (Props.graphicData == null)
                     {
-                        Log.ErrorOnce(this.parent.def + " has no SecondLayer graphicData but we are trying to access it.", 764532);
+                        Log.ErrorOnce(parent.def + " has no SecondLayer graphicData but we are trying to access it.", 764532);
                         return BaseContent.BadGraphic;
                     }
-                    this.graphicInt = this.Props.graphicData.GraphicColoredFor(this.parent);
+                    graphicInt = Props.graphicData.GraphicColoredFor(parent);
                 }
-                return this.graphicInt;
+                return graphicInt;
             }
         }
 
         public override void PostDraw()
         {
             base.PostDraw();
-            this.Graphic.Draw(GenThing.TrueCenter(this.parent.Position, this.parent.Rotation, this.parent.def.size, this.Props.Altitude), this.parent.Rotation, this.parent);
+            Graphic.Draw(GenThing.TrueCenter(parent.Position, parent.Rotation, parent.def.size, Props.Altitude), parent.Rotation, parent);
         }
     }
 }
