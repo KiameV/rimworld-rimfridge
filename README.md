@@ -17,20 +17,20 @@ On Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=1180721235
 In the Ludeon Forum: https://ludeon.com/forums/index.php?topic=32980.0
 
 Thanks to everyone who's helped translate this mod!
-Dragomano &amp; qeqwrqweqweter - Russian
-53N4 - Spanish
-duduluu &amp; Schr0d - Chinese
-phmalu - Portuguese
-Breakyt - French
-Ɲơɴɑɱɛ - German
-KondenEinenShizainoLaw - Japanese
-silverjoy &amp; Orange_Mushroom - Korean
-drerp - Hungarian
-WebsterBolek - Polish
-Firty - Portuguese
+* Dragomano &amp; qeqwrqweqweter - Russian
+* 53N4 - Spanish
+* duduluu &amp; Schr0d - Chinese
+* phmalu - Portuguese
+* Breakyt - French
+* Ɲơɴɑɱɛ - German
+* KondenEinenShizainoLaw - Japanese
+* silverjoy &amp; Orange_Mushroom - Korean
+* drerp - Hungarian
+* WebsterBolek - Polish
+* Firty - Portuguese
 
 Thanks to everyone who's added/edited code!
-Demonseed Elite - Recoded everything for better compatibility and additional features
-towhead - Made the fridges hide the uglyness of food
+* Demonseed Elite - Recoded everything for better compatibility and additional features
+* towhead - Made the fridges hide the uglyness of food
 
 Original Author: Vendan
