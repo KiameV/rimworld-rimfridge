@@ -6,10 +6,7 @@ namespace RimFridge
 {
     public class SettingsController : Mod
     {
-        public SettingsController(ModContentPack content) : base(content)
-        {
-            base.GetSettings<Settings>();
-        }
+        public SettingsController(ModContentPack content) : base(content) => base.GetSettings<Settings>();
 
         public override string SettingsCategory()
         {
@@ -26,7 +23,7 @@ namespace RimFridge
             {
                 if (Settings.PowerFactor.ValidateInput())
                 {
-                    base.GetSettings<Settings>().Write();
+                    GetSettings<Settings>().Write();
                     Messages.Message("New Power Factor Applied", MessageTypeDefOf.PositiveEvent);
                 }
             }
@@ -39,14 +36,14 @@ namespace RimFridge
         }
     }
 
-    class Settings : ModSettings
+    internal class Settings : ModSettings
     {
         public static readonly FloatInput PowerFactor = new FloatInput("Base Power Factor");
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<string>(ref (PowerFactor.AsString), "RimFridge.PowerFactor", "1.00", false);
+            Scribe_Values.Look(ref (PowerFactor.AsString), "RimFridge.PowerFactor", "1.00", false);
         }
     }
 }
