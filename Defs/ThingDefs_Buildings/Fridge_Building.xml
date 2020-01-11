@@ -6,6 +6,7 @@
 		<tradeTags>
 			<li>Furniture</li>
 		</tradeTags>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<category>Building</category>
 		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -52,7 +53,7 @@
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_Refrigerator</defName>
 		<label>Dual Refrigerator</label>
-		<thingClass>RimFridge.Building_Refrigerator</thingClass>
+		<thingClass>Building_Storage</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/DualFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -96,6 +97,15 @@
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>
+			<li Class="RimFridge.CompProperties_Refrigerator"> 
+				<drinksBestCold>
+					<li>Beer</li>
+					<li>RC2_Ale</li>
+					<li>RC2_Cider</li>
+					<li>RC2_Grog</li>
+					<li>RC2_Stout</li>
+				</drinksBestCold>
+			</li>
 		</comps>	
 		<inspectorTabs>
 			<li>ITab_Storage</li>
@@ -103,7 +113,7 @@
 		<designationHotKey>Misc12</designationHotKey>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
-		<description>Rottable things stored in this will not spoil</description>
+		<description>Rottable things stored in this will not spoil.</description>
 		<tickerType>Rare</tickerType>
 		<designationCategory>Temperature</designationCategory>
 		<pathCost>30</pathCost>
@@ -115,7 +125,7 @@
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_SingleRefrigerator</defName>
 		<label>Single Refrigerator</label>
-		<thingClass>RimFridge.Building_Refrigerator</thingClass>
+		<thingClass>Building_Storage</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/SingleFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -159,6 +169,15 @@
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>
+			<li Class="RimFridge.CompProperties_Refrigerator"> 
+				<drinksBestCold>
+					<li>Beer</li>
+					<li>RC2_Ale</li>
+					<li>RC2_Cider</li>
+					<li>RC2_Grog</li>
+					<li>RC2_Stout</li>
+				</drinksBestCold>
+			</li>
 		</comps>	
 		<inspectorTabs>
 			<li>ITab_Storage</li>
@@ -166,7 +185,7 @@
 		<designationHotKey>Misc12</designationHotKey>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
-		<description>Rottable things stored in this will not spoil</description>
+		<description>Rottable things stored in this will not spoil.</description>
 		<tickerType>Rare</tickerType>
 		<designationCategory>Temperature</designationCategory>
 		<pathCost>30</pathCost>
@@ -179,7 +198,7 @@
 	<ThingDef ParentName="FridgeBase">
 		<defName>RimFridge_QuadRefrigerator</defName>
 		<label>Quad Refrigerator</label>
-		<thingClass>RimFridge.Building_Refrigerator</thingClass>
+		<thingClass>Building_Storage</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/QuadFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -222,6 +241,15 @@
 					<drawSize>(4,4)</drawSize>
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
+			</li>
+			<li Class="RimFridge.CompProperties_Refrigerator"> 
+				<drinksBestCold>
+					<li>Beer</li>
+					<li>RC2_Ale</li>
+					<li>RC2_Cider</li>
+					<li>RC2_Grog</li>
+					<li>RC2_Stout</li>
+				</drinksBestCold>
 			</li>
 		</comps>	
 		<inspectorTabs>
