@@ -5,7 +5,7 @@
 	  <success>Always</success> 
 	  <operations>
 		<li Class="PatchOperationAdd">
-		  <xpath>Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/comps</xpath>
+		  <xpath>/Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/comps</xpath>
 		  <value>
 			<li Class="RimFridge.CompProperties_Refrigerator">
 				<drinksBestCold>
@@ -19,7 +19,7 @@
 		  </value>
 		</li>
 		<li Class="PatchOperationReplace">
-		  <xpath>Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/thingClass</xpath>
+		  <xpath>/Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/thingClass</xpath>
 		  <value><thingClass>Building_Storage</thingClass></value>
 		</li>
 	  </operations>
