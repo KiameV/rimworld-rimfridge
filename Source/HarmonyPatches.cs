@@ -13,17 +13,38 @@ namespace RimFridge
     {
         static HarmonyPatches()
         {
-            var harmony = HarmonyInstance.Create("com.rimfridge.rimworld.mod");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            HarmonyInstance.Create("com.rimfridge.rimworld.mod").PatchAll(Assembly.GetExecutingAssembly());
 
-            Log.Message(
-                "RimFridge Harmony Patches:" + Environment.NewLine +
-                "  Prefix:" + Environment.NewLine +
-                "    CompTemperatureRuinable.DoTicks - Will return false if within a RimFridge" + Environment.NewLine +
-                "    ReachabilityUtility.CanReach" + Environment.NewLine +
-                "  Postfix:" + Environment.NewLine +
-                "    GameComponentUtility.StartedNewGame" + Environment.NewLine +
-                "    GameComponentUtility.LoadedGame");
+            Log.Message("RimFridge Harmony Patches:" + Environment.NewLine +
+                        "    Prefix:" + Environment.NewLine +
+                        "        ReachabilityUtility.CanReach - So pawns can get items in Wall-Fridges" + Environment.NewLine +
+                        "    Postfix:" + Environment.NewLine +
+                        "    GameComponentUtility.StartedNewGame - Apply power settings at start" + Environment.NewLine +
+                        "    GameComponentUtility.LoadedGame - Apply power settings on load" + Environment.NewLine +
+                        "    GenTemperature.TryGetTemperatureForCell - Overrides room temperature within the cells of the RimFridge" + Environment.NewLine +
+                        "    TradeShip.ColonyThingsWillingToBuy - Add items stored inside a wall-fridge to the trade list if in a room with an orbital beacon" + Environment.NewLine +
+                        "    FoodUtility.TryFindBestFoodSourceFor - Allow Prisoners to eat food from fridges");
+        }
+    }
+
+    [HarmonyPatch(typeof(ReachabilityUtility), "CanReach")]
+    static class Patch_ReachabilityUtility_CanReach
+    {
+        static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBash, TraverseMode mode)
+        {
+            if (dest != null && dest.Thing != null && dest.Thing.def.category == ThingCategory.Item)
+            {
+                foreach (Thing thing in Current.Game.CurrentMap.thingGrid.ThingsAt(dest.Thing.Position))
+                {
+                    if (ThingCompUtility.TryGetComp<CompRefrigerator>(thing) != null)
+                    {
+                        peMode = PathEndMode.Touch;
+                        __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 
@@ -45,80 +66,24 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPatch(typeof(CompTemperatureRuinable), "DoTicks")]
-    static class Patch_CompTemperatureRuinable_DoTicks
+    [HarmonyPatch(typeof(GenTemperature), "TryGetTemperatureForCell")]
+    static class Patch_GenTemperature_TryGetDirectAirTemperatureForCell
     {
-        private static FieldInfo ruinedPercentFI;
-        private static FieldInfo RuinedPercentFI
+        static void Postfix(bool __result, ref IntVec3 c, ref Map map, ref float tempResult)
         {
-            get
+            IEnumerable<Thing> things = map?.thingGrid.ThingsAt(c);
+            if (things != null)
             {
-                if (ruinedPercentFI == null)
+                foreach (Thing thing in things)
                 {
-                    ruinedPercentFI = typeof(CompTemperatureRuinable).GetField("ruinedPercent", BindingFlags.Instance | BindingFlags.NonPublic);
-                }
-                return ruinedPercentFI;
-            }
-        }
-        static bool Prefix(CompTemperatureRuinable __instance, int ticks)
-        {
-            if (!__instance.Ruined)
-            {
-                IEnumerable<Thing> things = __instance.parent?.Map?.thingGrid.ThingsAt(__instance.parent.Position);
-                if (things != null)
-                {
-                    foreach (Thing thing in things)
+                    CompRefrigerator fridge = ThingCompUtility.TryGetComp<CompRefrigerator>(thing);
+                    if(fridge !=null)
                     {
-                        if (thing?.def.defName.StartsWith("RimFridge") == true)
-                        {
-                            Building_Refrigerator refridge = (Building_Refrigerator)thing;
-                            float ruinedPercent = (float)RuinedPercentFI.GetValue(__instance);
-                            if (refridge.CurrentTemp > __instance.Props.maxSafeTemperature)
-                            {
-                                ruinedPercent += (refridge.CurrentTemp - __instance.Props.maxSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
-                            }
-                            else if (refridge.CurrentTemp < __instance.Props.minSafeTemperature)
-                            {
-                                ruinedPercent -= (refridge.CurrentTemp - __instance.Props.minSafeTemperature) * __instance.Props.progressPerDegreePerTick * (float)ticks;
-                            }
-
-                            if (ruinedPercent >= 1f)
-                            {
-                                ruinedPercent = 1f;
-                                __instance.parent.BroadcastCompSignal("RuinedByTemperature");
-                            }
-                            else if (ruinedPercent < 0f)
-                            {
-                                ruinedPercent = 0f;
-                            }
-                            RuinedPercentFI.SetValue(__instance, ruinedPercent);
-                            return false;
-                        }
-                    }
+                        tempResult = fridge.currentTemp;
+                        __result = true;
+                    }                    
                 }
             }
-            return true;
-        }
-    }
-
-    [HarmonyPatch(typeof(ReachabilityUtility), "CanReach")]
-    static class Patch_ReachabilityUtility_CanReach
-    {
-        static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBash, TraverseMode mode)
-        {
-            if (dest != null && dest.Thing != null && dest.Thing.def.category == ThingCategory.Item)
-            {
-                foreach (Thing t in Current.Game.CurrentMap.thingGrid.ThingsAt(dest.Thing.Position))
-                {
-                    if (t.def.defName.StartsWith("RimFridge_"))
-                    {
-                        peMode = PathEndMode.Touch;
-                        __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
-                        return false;
-                    }
-                }
-            }
-            return true;
         }
     }
 
@@ -130,27 +95,70 @@ namespace RimFridge
         {
             if (playerNegotiator != null && playerNegotiator.Map != null)
             {
-                if (playerNegotiator.Map != null)
+                foreach (Thing thing in playerNegotiator.Map.listerThings.AllThings)
                 {
-                    List<Thing> result = null;
-                    foreach (Thing t in playerNegotiator.Map.listerThings.AllThings)
+                    if (thing != null && 
+                        ThingCompUtility.TryGetComp<CompRefrigerator>(thing) != null && 
+                        thing.def.passability == Traversability.Impassable && 
+                        thing is Building_Storage storage)
                     {
-                        if (t is Building_Refrigerator && t.def.defName.IndexOf("Wall") != -1)
+                        foreach (IntVec3 cell in storage.AllSlotCells())
                         {
-                            foreach (Thing f in playerNegotiator.Map.thingGrid.ThingsAt(t.Position))
+                            foreach (Thing refrigeratedItem in playerNegotiator.Map.thingGrid.ThingsAt(cell))
                             {
-                                if (((Building_Refrigerator)t).settings.AllowedToAccept(f))
+                                if (storage.settings.AllowedToAccept(refrigeratedItem))
                                 {
-                                    if (result == null)
-                                        result = new List<Thing>(__result);
-                                    result.Add(f);
+                                    if (__result == null)
+                                        __result = new List<Thing>(__result);
+                                    __result.Add(refrigeratedItem);
                                     break;
                                 }
                             }
                         }
                     }
-                    if (result != null)
-                        __result = result;
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(FoodUtility), "TryFindBestFoodSourceFor")]
+    static class Patch_FoodUtility_TryFindBestFoodSourceFor
+    {
+        static void Postfix(ref bool __result, Pawn getter, Pawn eater, ref Thing foodSource, ref ThingDef foodDef, bool canRefillDispenser, bool canUseInventory, bool allowForbidden, bool allowCorpse, bool allowSociallyImproper, bool allowHarvest, bool forceScanWholeMap)
+        {
+            if (__result == false &&
+                getter.Map != null &&
+                getter.Faction != Faction.OfPlayer &&
+                getter == eater &&
+                getter.RaceProps.ToolUser &&
+                getter.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
+            {
+                Room prison = getter.Position.GetRoomOrAdjacent(getter.Map);
+                if (prison != null && prison.isPrisonCell)
+                {
+                    foreach (Thing t in prison.ContainedAndAdjacentThings)
+                    {
+                        if (t.Map != null &&
+                            !t.IsForbidden(getter) &&
+                            t is Building_Storage storage)
+                        {
+                            foreach (IntVec3 cell in storage.AllSlotCells())
+                            {
+                                foreach (Thing possibleFood in t.Map.thingGrid.ThingsAt(cell))
+                                {
+                                    if (!possibleFood.IsForbidden(getter) &&
+                                        storage.Map.reservationManager.CanReserve(getter, new LocalTargetInfo(possibleFood)) &&
+                                        getter.RaceProps.CanEverEat(possibleFood))
+                                    {
+                                        __result = true;
+                                        foodSource = possibleFood;
+                                        foodDef = possibleFood.def;
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

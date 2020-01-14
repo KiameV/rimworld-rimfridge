@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="FridgeBase">
-		<defName>RimFridge_WallRefrigerator</defName>
-		<label>Wall Dual Refrigerator</label>
-		<thingClass>RimFridge.Building_Refrigerator</thingClass>
-		<graphicData>
-			<texPath>Building/Temperature/Fridge/WallDualFridge</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,1)</drawSize>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
+	<ThingDef Name="WallFridgeBase" ParentName="FridgeBase" Abstract="True">
 		<passability>Impassable</passability>
 		<blockWind>true</blockWind>
 		<fillPercent>1</fillPercent>
 		<coversFloor>true</coversFloor>
 		<blockLight>true</blockLight>
 		<canOverlapZones>false</canOverlapZones>
-		<castEdgeShadows>true</castEdgeShadows>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<building>
+			<canPlaceOverWall>true</canPlaceOverWall>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="WallFridgeBase">
+		<defName>RimFridge_WallRefrigerator</defName>
+		<label>Wall Dual Refrigerator</label>
+		<graphicData>
+			<texPath>Building/Temperature/Fridge/WallDualFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
 		<costList>
 			<Steel>40</Steel>
 			<ComponentIndustrial>1</ComponentIndustrial>
@@ -29,23 +31,7 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<size>(2,1)</size>
-		<researchPrerequisites>
-			<li>AirConditioning</li>
-		</researchPrerequisites>	
-		<building>
-			<canPlaceOverWall>true</canPlaceOverWall>
-		</building>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>90</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Glower">
-				<glowRadius>2.5</glowRadius>
-				<glowColor>(89,188,255,0)</glowColor>
-			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/WallDualFridgeLid</texPath>
@@ -56,39 +42,16 @@
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>
 		</comps>	
-		<inspectorTabs>
-			<li>ITab_Storage</li>
-		</inspectorTabs>
-		<designationHotKey>Misc12</designationHotKey>
-		<surfaceType>Item</surfaceType>
-		<description>Rottable things stored in this will not spoil</description>
-		<tickerType>Rare</tickerType>
-		<designationCategory>Temperature</designationCategory>
-		<pathCost>30</pathCost>
-		<placeWorkers>
-			<li>PlaceWorker_Heater</li>
-		</placeWorkers>
-		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 	</ThingDef>
 
-	<ThingDef ParentName="FridgeBase">
+	<ThingDef ParentName="WallFridgeBase">
 		<defName>RimFridge_SingleWallRefrigerator</defName>
 		<label>Wall Single Refrigerator</label>
-		<thingClass>RimFridge.Building_Refrigerator</thingClass>
 		<graphicData>
 			<texPath>Building/Temperature/Fridge/WallSingleFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1,1)</drawSize>
 		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>Impassable</passability>
-		<blockWind>true</blockWind>
-		<fillPercent>1</fillPercent>
-		<coversFloor>true</coversFloor>
-		<blockLight>true</blockLight>
-		<canOverlapZones>false</canOverlapZones>
-		<castEdgeShadows>true</castEdgeShadows>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<costList>
 			<Steel>20</Steel>
 			<ComponentIndustrial>1</ComponentIndustrial>
@@ -96,27 +59,11 @@
 		<statBases>
 			<Mass>15</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToBuild>1050</WorkToBuild>
+			<WorkToBuild>750</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<size>(1,1)</size>
-		<researchPrerequisites>
-			<li>AirConditioning</li>
-		</researchPrerequisites>	
-		<building>
-			<canPlaceOverWall>true</canPlaceOverWall>
-		</building>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>50</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Glower">
-				<glowRadius>2</glowRadius>
-				<glowColor>(89,188,255,0)</glowColor>
-			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/WallSingleFridgeLid</texPath>
@@ -126,19 +73,6 @@
 				</graphicData>
 				<altitudeLayer>MoteOverhead</altitudeLayer>
 			</li>
-		</comps>	
-		<inspectorTabs>
-			<li>ITab_Storage</li>
-		</inspectorTabs>
-		<designationHotKey>Misc12</designationHotKey>
-		<surfaceType>Item</surfaceType>
-		<description>Rottable things stored in this will not spoil</description>
-		<tickerType>Rare</tickerType>
-		<designationCategory>Temperature</designationCategory>
-		<pathCost>30</pathCost>
-		<placeWorkers>
-			<li>PlaceWorker_Heater</li>
-		</placeWorkers>
-		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		</comps>
 	</ThingDef>
 </Defs>

@@ -6,37 +6,34 @@ namespace RimFridge
 {
     internal class CompFrosty : ThingComp
     {
-        public float Temp = 21f;
+        // Most beer's ideal temperature is around 8 degC
+        private const float IDEAL_TEMPERATURE = 8f;
 
-        public CompProperties_Frosty Props
-        {
-            get
-            {
-                return (CompProperties_Frosty)this.props;
-            }
-        }
+        // Starting temperature
+        public float temperature = 21f;
+
+        public CompProperties_Frosty Props => (CompProperties_Frosty)props;
 
         public override void PostIngested(Pawn ingester)
         {
             base.PostIngested(ingester);
-            bool flag = this.Temp < 5f;
-            if (flag)
+            if(temperature <= IDEAL_TEMPERATURE)
             {
-                ingester.needs.mood.thoughts.memories.TryGainMemory(this.Props.thought, null);
+                ingester.needs.mood.thoughts.memories.TryGainMemory(Props.thought, null);
             }
         }
 
         public override void PostSplitOff(Thing piece)
         {
             ThingWithComps thingWithComps = piece as ThingWithComps;
-            bool flag = ThingCompUtility.TryGetComp<CompFrosty>(thingWithComps) == null;
-            if (flag)
+            
+            if(ThingCompUtility.TryGetComp<CompFrosty>(thingWithComps) == null)
             {
                 CompFrosty compFrosty = new CompFrosty();
                 thingWithComps.AllComps.Add(compFrosty);
                 compFrosty.props = CompProperties_Frosty.Beer;
                 compFrosty.parent = thingWithComps;
-                compFrosty.Temp = this.Temp;
+                compFrosty.temperature = temperature;
                 ((TickList)typeof(TickManager).GetField("tickListRare", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(Find.TickManager)).RegisterThing(thingWithComps);
             }
         }
@@ -45,11 +42,11 @@ namespace RimFridge
         {
             base.CompTickRare();
             float num = 15f;
-            if (this.parent.MapHeld != null)
+            if (parent.MapHeld != null)
             {
-                num = GridsUtility.GetTemperature(this.parent.PositionHeld, this.parent.MapHeld);
+                num = GridsUtility.GetTemperature(parent.PositionHeld, parent.MapHeld);
             }
-            CompEquippable comp = this.parent.GetComp<CompEquippable>();
+            CompEquippable comp = parent.GetComp<CompEquippable>();
             if (comp != null)
             {
                 Pawn casterPawn = comp.PrimaryVerb.CasterPawn;
@@ -58,26 +55,25 @@ namespace RimFridge
                     num = GridsUtility.GetTemperature(casterPawn.PositionHeld, casterPawn.MapHeld);
                 }
             }
-            if (this.parent.Spawned)
+            if (parent.Spawned)
             {
-                List<Thing> thingList = GridsUtility.GetThingList(this.parent.PositionHeld, this.parent.MapHeld);
+                List<Thing> thingList = GridsUtility.GetThingList(parent.PositionHeld, parent.MapHeld);
                 for (int i = 0; i < thingList.Count; i++)
                 {
-                    bool flag4 = thingList[i] is Building_Refrigerator;
-                    if (flag4)
+                    CompRefrigerator fridge = ThingCompUtility.TryGetComp<CompRefrigerator>(thingList[i]);
+                    if (fridge != null)
                     {
-                        Building_Refrigerator building_Refrigerator = thingList[i] as Building_Refrigerator;
-                        num = building_Refrigerator.CurrentTemp;
+                        num = fridge.currentTemp;
                         break;
                     }
                 }
             }
-            this.Temp += (num - this.Temp) * 0.05f;
+            temperature += (num - temperature) * 0.05f;
         }
 
         public override string CompInspectStringExtra()
         {
-            return (this.Temp < 5f) ? "Frosty." : "";
+            return (temperature <= IDEAL_TEMPERATURE) ? "Frosty" : "";
         }
     }
 }

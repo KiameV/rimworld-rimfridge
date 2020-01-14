@@ -5,6 +5,8 @@ namespace RimFridge
 {
     internal class CompProperties_Frosty : CompProperties
     {
+        private static ThoughtDef frosty = null;
+
         private static CompProperties_Frosty beer;
 
         public ThoughtDef thought;
@@ -15,8 +17,13 @@ namespace RimFridge
             {
                 if (beer == null)
                 {
-                    beer = new CompProperties_Frosty();
-                    beer.thought = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true);
+                    if (frosty == null)
+                        frosty = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true);
+
+                    beer = new CompProperties_Frosty
+                    {
+                        thought = frosty
+                    };
                 }
                 return beer;
             }

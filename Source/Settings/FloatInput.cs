@@ -3,7 +3,7 @@ using Verse;
 
 namespace RimFridge
 {
-    class FloatInput
+    internal class FloatInput
     {
         private readonly string name;
         public string AsString;
@@ -11,29 +11,18 @@ namespace RimFridge
         public FloatInput(string name, float initialValue = 1f)
         {
             this.name = name;
-            this.AsString = initialValue.ToString();
+            AsString = initialValue.ToString();
         }
 
         public float AsFloat
         {
-            get
-            {
-                if (this.ValidateInput())
-                {
-                    return float.Parse(AsString);
-                }
-                return 1f;
-            }
-            set
-            {
-                this.AsString = value.ToString();
-            }
+            get => ValidateInput() ? float.Parse(AsString) : 1f;
+            set => AsString = value.ToString();
         }
 
         public bool ValidateInput()
         {
-            float f;
-            if (float.TryParse(AsString, out f))
+            if (float.TryParse(AsString, out float f))
             {
                 if (f <= 0)
                 {
@@ -43,7 +32,7 @@ namespace RimFridge
             }
             else
             {
-                Messages.Message("Unable to parse " + name +  " to a number.", MessageTypeDefOf.RejectInput);
+                Messages.Message("Unable to parse " + name + " to a number.", MessageTypeDefOf.RejectInput);
                 return false;
             }
             return true;
@@ -51,7 +40,7 @@ namespace RimFridge
 
         public void Copy(FloatInput fi)
         {
-            this.AsString = fi.AsString;
+            AsString = fi.AsString;
         }
     }
 }
