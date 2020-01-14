@@ -1,16 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<RimFridge_Refrigerator.label>Geladeira (2x1)</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.label>Geladeira (2x1)</RimFridge_Refrigerator.label>
+  <RimFridge_Refrigerator.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator_Blueprint.label>Dual Refrigerator (blueprint)</RimFridge_Refrigerator_Blueprint.label>
+  <RimFridge_Refrigerator_Blueprint_Install.label>Dual Refrigerator (blueprint)</RimFridge_Refrigerator_Blueprint_Install.label>
+  <RimFridge_Refrigerator_Frame.label>Dual Refrigerator (building)</RimFridge_Refrigerator_Frame.label>
+  <RimFridge_Refrigerator_Frame.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_Refrigerator_Frame.description>
 
-	<RimFridge_Refrigerator.description>Armazena e congela refeições (entre outras coisas) para evitar que estrague.</RimFridge_Refrigerator.description>
+  <RimFridge_SingleRefrigerator.label>Minibar (1x1)</RimFridge_SingleRefrigerator.label>
+  <RimFridge_SingleRefrigerator.description>Um pequeno refrigerador para guardar comida e outras coisas.</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator_Blueprint.label>Minibar (blueprint)</RimFridge_SingleRefrigerator_Blueprint.label>
+  <RimFridge_SingleRefrigerator_Blueprint_Install.label>Minibar (blueprint)</RimFridge_SingleRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleRefrigerator_Frame.label>Minibar (construção)</RimFridge_SingleRefrigerator_Frame.label>
+  <RimFridge_SingleRefrigerator_Frame.description>Um pequeno refrigerador para guardar comida e outras coisas</RimFridge_SingleRefrigerator_Frame.description>
 
-	<RimFridge_SingleRefrigerator.label>Minibar (1x1)</RimFridge_SingleRefrigerator.label>
+  <RimFridge_QuadRefrigerator.label>Refrigerador quadrado (2x2)</RimFridge_QuadRefrigerator.label>
+  <RimFridge_QuadRefrigerator.description>Um grande frizer para armazenar e congelar alimentos</RimFridge_QuadRefrigerator.description>
+  <RimFridge_QuadRefrigerator_Blueprint.label>Refrigerador quadrado (blueprint)</RimFridge_QuadRefrigerator_Blueprint.label>
+  <RimFridge_QuadRefrigerator_Blueprint_Install.label>Refrigerador quadrado (blueprint)</RimFridge_QuadRefrigerator_Blueprint_Install.label>
+  <RimFridge_QuadRefrigerator_Frame.label>Refrigerador quadrado (construção)</RimFridge_QuadRefrigerator_Frame.label>
+  <RimFridge_QuadRefrigerator_Frame.description>Um grande frizer para armazenar e congelar alimentos</RimFridge_QuadRefrigerator_Frame.description>
 
-	<RimFridge_SingleRefrigerator.description>Um pequeno refrigerador para guardar comida e outras coisas.</RimFridge_SingleRefrigerator.description>
-
-	<RimFridge_QuadRefrigerator.label>Refrigerador quadrado (2x2)</RimFridge_QuadRefrigerator.label>
-
-	<RimFridge_QuadRefrigerator.description>Um grande frizer para armazenar e congelar alimentos</RimFridge_QuadRefrigerator.description>
 
 </LanguageData>
