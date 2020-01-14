@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_WallRefrigerator.label>壁掛式冰箱</RimFridge_WallRefrigerator.label>
+  <RimFridge_WallRefrigerator.description>食物放在裡面不會腐壞。</RimFridge_WallRefrigerator.description>
+  <RimFridge_WallRefrigerator_Blueprint.label>壁掛式冰箱（藍圖）</RimFridge_WallRefrigerator_Blueprint.label>
+  <RimFridge_WallRefrigerator_Blueprint_Install.label>壁掛式冰箱（藍圖）</RimFridge_WallRefrigerator_Blueprint_Install.label>
+  <RimFridge_WallRefrigerator_Frame.label>壁掛式冰箱（建造中）</RimFridge_WallRefrigerator_Frame.label>
+  <RimFridge_WallRefrigerator_Frame.description>食物放在裡面不會腐壞。</RimFridge_WallRefrigerator_Frame.description>
+
+  <RimFridge_SingleWallRefrigerator.label>小型壁掛式冰箱</RimFridge_SingleWallRefrigerator.label>
+  <RimFridge_SingleWallRefrigerator.description>食物放在裡面不會腐壞。</RimFridge_SingleWallRefrigerator.description>
+  <RimFridge_SingleWallRefrigerator_Blueprint.label>小型壁掛式冰箱（藍圖）</RimFridge_SingleWallRefrigerator_Blueprint.label>
+  <RimFridge_SingleWallRefrigerator_Blueprint_Install.label>小型壁掛式冰箱（藍圖）</RimFridge_SingleWallRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleWallRefrigerator_Frame.label>小型壁掛式冰箱（建造中）</RimFridge_SingleWallRefrigerator_Frame.label>
+  <RimFridge_SingleWallRefrigerator_Frame.description>食物放在裡面不會腐壞。</RimFridge_SingleWallRefrigerator_Frame.description>
+
+
+</LanguageData>
