@@ -19,7 +19,7 @@ In the Ludeon Forum: https://ludeon.com/forums/index.php?topic=32980.0
 Thanks to everyone who's helped translate this mod!
 * Dragomano &amp; qeqwrqweqweter - Russian
 * 53N4 - Spanish
-* duduluu &amp; Schr0d - Chinese
+* duduluu &amp; Schr0d &amp; Jiunejai &amp; failucha - Chinese
 * phmalu - Portuguese
 * Breakyt - French
 * Ɲơɴɑɱɛ - German
@@ -27,10 +27,10 @@ Thanks to everyone who's helped translate this mod!
 * silverjoy &amp; Orange_Mushroom - Korean
 * drerp - Hungarian
 * WebsterBolek - Polish
-* Firty - Portuguese
+* Firty &amp; MrCaka - Portuguese / Brazilian
 
 Thanks to everyone who's added/edited code!
-* Demonseed Elite - Recoded everything for better compatibility and additional features
+* Demonseed Elite - Refactored code for better compatibility and additional features
 * towhead - Made the fridges hide the uglyness of food
 
 Original Author: Vendan
