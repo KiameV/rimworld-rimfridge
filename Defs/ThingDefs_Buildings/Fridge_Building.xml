@@ -33,6 +33,9 @@
 						<li>PlantMatter</li>
 						<li>PlantFoodRaw</li>
 					</categories>
+					<specialFiltersToDisallow>
+						<li>AllowRotten</li>
+					</specialFiltersToDisallow>
 				</filter>
 			</fixedStorageSettings>
 			<defaultStorageSettings>
