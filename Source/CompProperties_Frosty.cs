@@ -15,8 +15,10 @@ namespace RimFridge
             {
                 if (beer == null)
                 {
-                    beer = new CompProperties_Frosty();
-                    beer.thought = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true);
+                    beer = new CompProperties_Frosty
+                    {
+                        thought = DefDatabase<ThoughtDef>.GetNamed("FrostyBeer", true)
+                    };
                 }
                 return beer;
             }

@@ -50,15 +50,7 @@ namespace SaveStorageSettingsUtil
 
         public static IEnumerable<Gizmo> AddSaveLoadGizmos(IEnumerable<Gizmo> gizmos, string storageTypeName, ThingFilter thingFilter, int groupKey = 987767552)
         {
-            List<Gizmo> l;
-            if (gizmos != null)
-            {
-                l = new List<Gizmo>(gizmos);
-            }
-            else
-            {
-                l = new List<Gizmo>(2);
-            }
+            List<Gizmo> l = gizmos != null ? new List<Gizmo>(gizmos) : new List<Gizmo>(2);
             return AddSaveLoadGizmos(l, storageTypeName, thingFilter);
         }
 
@@ -69,7 +61,7 @@ namespace SaveStorageSettingsUtil
                 if (Exists)
                 {
                     saveStateAssembly.GetType("SaveStorageSettings.GizmoUtil").GetMethod("AddSaveLoadGizmos", BindingFlags.Static | BindingFlags.Public).Invoke(
-                        null, new Object[] { gizmos, storageTypeName, thingFilter, groupKey });
+                        null, parameters: new object[] { gizmos, storageTypeName, thingFilter, groupKey });
                 }
             }
             catch(Exception e)
