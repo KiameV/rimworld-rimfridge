@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using System.Collections.Generic;
+using SaveStorageSettingsUtil;
 
 namespace RimFridge
 {
@@ -44,7 +45,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offsetN10); },
                 defaultLabel = offsetN10.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandLowerTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc5,
+                //hotKey = KeyBindingDefOf.Misc5,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
             };
             yield return new Command_Action
@@ -52,7 +53,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offsetN1); },
                 defaultLabel = offsetN1.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandLowerTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc4,
+                //hotKey = KeyBindingDefOf.Misc4,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
             };
             yield return new Command_Action
@@ -60,7 +61,7 @@ namespace RimFridge
                 action = delegate { desiredTemp = defaultDesiredTemperature; },
                 defaultLabel = "CommandResetTemp".Translate(),
                 defaultDesc = "CommandResetTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc1,
+                //hotKey = KeyBindingDefOf.Misc1,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempReset", true)
             };
             yield return new Command_Action
@@ -68,7 +69,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offset1); },
                 defaultLabel = "+" + offset1.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc2,
+                //hotKey = KeyBindingDefOf.Misc2,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
             };
             yield return new Command_Action
@@ -76,7 +77,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offset10); },
                 defaultLabel = "+" + offset10.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc3,
+                //hotKey = KeyBindingDefOf.Misc3,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
             };
         }
@@ -169,10 +170,10 @@ namespace RimFridge
         private void CreateFixedStorageSettings()
         {
             fixedStorageSettings = new StorageSettings();
-            fixedStorageSettings.CopyFrom(parent.def.building.fixedStorageSettings);
+            fixedStorageSettings.CopyFrom(((Building_Storage)parent).def.building.fixedStorageSettings);
             foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
             {
-                if (td.HasComp(typeof(CompRottable)) && !fixedStorageSettings.filter.Allows(td))
+                if ((td.HasComp(typeof(CompRottable)) || td.HasComp(typeof(CompTemperatureRuinable)) ) && !fixedStorageSettings.filter.Allows(td)) 
                 {
                     fixedStorageSettings.filter.SetAllow(td, true);
                 }
@@ -183,6 +184,7 @@ namespace RimFridge
             base.Initialize(props);
             CreateFixedStorageSettings();
 
+            ((Building_Storage)parent).def.building.fixedStorageSettings = fixedStorageSettings;
             ((Building_Storage)parent).settings = new StorageSettings((Building_Storage)parent);
             if (parent.def.building.defaultStorageSettings != null)
             {
