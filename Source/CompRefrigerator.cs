@@ -5,7 +5,6 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using System.Collections.Generic;
-using SaveStorageSettingsUtil;
 
 namespace RimFridge
 {
@@ -19,6 +18,9 @@ namespace RimFridge
         public string buildingLabel = "";
         private StorageSettings fixedStorageSettings;
         private CompPowerTrader powerTrader => parent.GetComp<CompPowerTrader>();
+        private CompRefuelable refuelable => parent.GetComp<CompRefuelable>();
+
+        public bool ShouldBeActive => (powerTrader != null && powerTrader.PowerOn) || (refuelable != null && refuelable.HasFuel);
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
@@ -152,7 +154,7 @@ namespace RimFridge
                 // When the RimFridge's compressor is working and it's pushing the internal temperature down, it can draw a lot of power!  
                 // Once it gets to temp, maintaining it isn't bad.
                 float change = Mathf.Max(desiredTemp - (currentTemp + changetemperature), -3f);
-                if (powerTrader != null && powerTrader.PowerOn)
+                if (ShouldBeActive)  //Using this just in case someone wants to make a wood-burning RimFridge
                 {
                     changetemperature += change;
                     changeEnergy -= change * 1.25f;
@@ -164,7 +166,10 @@ namespace RimFridge
             currentTemp += changetemperature;
             IntVec3 pos = position + IntVec3.North.RotatedBy(parent.Rotation);
             GenTemperature.PushHeat(pos, map, changeEnergy * 1.25f);
-            powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
+            if (powerTrader != null)
+            {
+                powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
+            }
         }
 
         private void CreateFixedStorageSettings()
@@ -226,7 +231,10 @@ namespace RimFridge
             sb.Append(Environment.NewLine);
             sb.Append("RimFridge.Power".Translate());
             sb.Append(": ");
-            sb.Append((powerTrader != null && powerTrader.PowerOn) ? "On".Translate() : "Off".Translate());
+            if (powerTrader != null)
+            {
+                sb.Append((powerTrader != null && powerTrader.PowerOn) ? "On".Translate() : "Off".Translate());
+            }
             return sb.ToString().TrimEndNewlines();
         }
     }

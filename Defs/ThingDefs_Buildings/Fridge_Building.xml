@@ -27,7 +27,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(4,3)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
@@ -59,7 +59,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(3,3)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
@@ -92,7 +92,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(4,4)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
