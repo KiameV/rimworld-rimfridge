@@ -36,11 +36,10 @@ namespace RimFridge
             yield return new Command_Action
             {
                 action = delegate { Find.WindowStack.Add(new Dialog_RenameFridge(this)); },
-                defaultLabel = "Rename".Translate(),
+                defaultLabel = "CommandRenameZoneLabel".Translate(),
                 defaultDesc = "RimFridge.RenameTheRefrigerator".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true),
-                activateSound = SoundDef.Named("Click"),
-                groupKey = 887767542
+                hotKey = KeyBindingDefOf.Misc1,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/RenameZone", true),
             };
             yield return new Command_Action
             {

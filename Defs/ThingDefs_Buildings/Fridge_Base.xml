@@ -56,10 +56,6 @@
 			</defaultStorageSettings>
 		</building>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>90</basePowerConsumption>
-			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
 			<li Class="CompProperties_Glower">
