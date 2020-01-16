@@ -18,6 +18,9 @@ namespace RimFridge
         public string buildingLabel = "";
         private StorageSettings fixedStorageSettings;
         private CompPowerTrader powerTrader => parent.GetComp<CompPowerTrader>();
+        private CompRefuelable refuelable => parent.GetComp<CompRefuelable>();
+
+        public bool ShouldBeActive => (powerTrader != null && powerTrader.PowerOn) || (refuelable != null && refuelable.HasFuel);
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
@@ -33,18 +36,17 @@ namespace RimFridge
             yield return new Command_Action
             {
                 action = delegate { Find.WindowStack.Add(new Dialog_RenameFridge(this)); },
-                defaultLabel = "Rename".Translate(),
+                defaultLabel = "CommandRenameZoneLabel".Translate(),
                 defaultDesc = "RimFridge.RenameTheRefrigerator".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Rename", true),
-                activateSound = SoundDef.Named("Click"),
-                groupKey = 887767542
+                hotKey = KeyBindingDefOf.Misc1,
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/RenameZone", true),
             };
             yield return new Command_Action
             {
                 action = delegate { InterfaceChangeTargetTemperature(offsetN10); },
                 defaultLabel = offsetN10.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandLowerTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc5,
+                //hotKey = KeyBindingDefOf.Misc5,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
             };
             yield return new Command_Action
@@ -52,7 +54,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offsetN1); },
                 defaultLabel = offsetN1.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandLowerTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc4,
+                //hotKey = KeyBindingDefOf.Misc4,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempLower", true)
             };
             yield return new Command_Action
@@ -60,7 +62,7 @@ namespace RimFridge
                 action = delegate { desiredTemp = defaultDesiredTemperature; },
                 defaultLabel = "CommandResetTemp".Translate(),
                 defaultDesc = "CommandResetTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc1,
+                //hotKey = KeyBindingDefOf.Misc1,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempReset", true)
             };
             yield return new Command_Action
@@ -68,7 +70,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offset1); },
                 defaultLabel = "+" + offset1.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc2,
+                //hotKey = KeyBindingDefOf.Misc2,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
             };
             yield return new Command_Action
@@ -76,7 +78,7 @@ namespace RimFridge
                 action = delegate { InterfaceChangeTargetTemperature(offset10); },
                 defaultLabel = "+" + offset10.ToStringTemperatureOffset("F0"),
                 defaultDesc = "CommandRaiseTempDesc".Translate(),
-                hotKey = KeyBindingDefOf.Misc3,
+                //hotKey = KeyBindingDefOf.Misc3,
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/TempRaise", true)
             };
         }
@@ -151,7 +153,7 @@ namespace RimFridge
                 // When the RimFridge's compressor is working and it's pushing the internal temperature down, it can draw a lot of power!  
                 // Once it gets to temp, maintaining it isn't bad.
                 float change = Mathf.Max(desiredTemp - (currentTemp + changetemperature), -3f);
-                if (powerTrader != null && powerTrader.PowerOn)
+                if (ShouldBeActive)  //Using this just in case someone wants to make a wood-burning RimFridge
                 {
                     changetemperature += change;
                     changeEnergy -= change * 1.25f;
@@ -163,16 +165,19 @@ namespace RimFridge
             currentTemp += changetemperature;
             IntVec3 pos = position + IntVec3.North.RotatedBy(parent.Rotation);
             GenTemperature.PushHeat(pos, map, changeEnergy * 1.25f);
-            powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
+            if (powerTrader != null)
+            {
+                powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
+            }
         }
 
         private void CreateFixedStorageSettings()
         {
             fixedStorageSettings = new StorageSettings();
-            fixedStorageSettings.CopyFrom(parent.def.building.fixedStorageSettings);
+            fixedStorageSettings.CopyFrom(((Building_Storage)parent).def.building.fixedStorageSettings);
             foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
             {
-                if (td.HasComp(typeof(CompRottable)) && !fixedStorageSettings.filter.Allows(td))
+                if ((td.HasComp(typeof(CompRottable)) || td.HasComp(typeof(CompTemperatureRuinable)) ) && !fixedStorageSettings.filter.Allows(td)) 
                 {
                     fixedStorageSettings.filter.SetAllow(td, true);
                 }
@@ -183,6 +188,7 @@ namespace RimFridge
             base.Initialize(props);
             CreateFixedStorageSettings();
 
+            ((Building_Storage)parent).def.building.fixedStorageSettings = fixedStorageSettings;
             ((Building_Storage)parent).settings = new StorageSettings((Building_Storage)parent);
             if (parent.def.building.defaultStorageSettings != null)
             {
@@ -224,7 +230,10 @@ namespace RimFridge
             sb.Append(Environment.NewLine);
             sb.Append("RimFridge.Power".Translate());
             sb.Append(": ");
-            sb.Append((powerTrader != null && powerTrader.PowerOn) ? "On".Translate() : "Off".Translate());
+            if (powerTrader != null)
+            {
+                sb.Append((powerTrader != null && powerTrader.PowerOn) ? "On".Translate() : "Off".Translate());
+            }
             return sb.ToString().TrimEndNewlines();
         }
     }

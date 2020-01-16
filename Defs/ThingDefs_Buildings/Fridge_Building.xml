@@ -20,6 +20,10 @@
 		</statBases>
 		<size>(2,1)</size>
 		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>90</basePowerConsumption>
+      </li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/DualFridgeLid</texPath>
@@ -27,7 +31,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(4,3)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
@@ -52,6 +56,10 @@
 		</statBases>
 		<size>(1,1)</size>
 		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+      </li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/SingleFridgeLid</texPath>
@@ -59,7 +67,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(3,3)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
@@ -85,6 +93,10 @@
 		</statBases>
 		<size>(2,2)</size>
 		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>100</basePowerConsumption>
+      </li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/QuadFridgeLid</texPath>
@@ -92,7 +104,7 @@
 					<shaderType>Transparent</shaderType>
 					<drawSize>(4,4)</drawSize>
 				</graphicData>
-				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
