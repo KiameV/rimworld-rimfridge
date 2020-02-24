@@ -5,8 +5,9 @@
 	<author>Kiame Vivacity</author>
 	<supportedVersions>
         <li>1.0</li>
+	<li>1.1</li>	
 	</supportedVersions>
-
+	<packageId>KV.RimFridge<packageId>
 	<url>https://ludeon.com/forums/index.php?topic=32980.0</url>
 	<description>Adds refrigerated racks to keep food and other perishables cold.  Ideal for use in dining rooms, freeing up labour from feeding prisoners, or keeping food on hand for cooks.
 
