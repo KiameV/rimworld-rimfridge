@@ -1,0 +1,12 @@
+<loadFolders>
+  <default>
+  <li>About</li>
+  <li>Defs</li>
+  <li>Languages</li>
+  <li>Patches</li>
+  <li>Textures</li>
+  </default>
+  <1.1>
+    <li>1.1</li>
+  </1.1>
+</loadFolders>
