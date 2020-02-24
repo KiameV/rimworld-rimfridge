@@ -1,4 +1,4 @@
-﻿using Harmony;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,9 @@ namespace RimFridge
     {
         static HarmonyPatches()
         {
-            HarmonyInstance.Create("com.rimfridge.rimworld.mod").PatchAll(Assembly.GetExecutingAssembly());
+            var harmony = new Harmony("com.rimfridge.rimworld.mod");
+            var assembly = Assembly.GetExecutingAssembly();
+            harmony.PatchAll();
 
             Log.Message("RimFridge Harmony Patches:" + Environment.NewLine +
                         "    Prefix:" + Environment.NewLine +
@@ -110,7 +112,7 @@ namespace RimFridge
                                 {
                                     if (__result == null)
                                         __result = new List<Thing>(__result);
-                                    __result.Add(refrigeratedItem);
+                                    __result.AddItem(refrigeratedItem);
                                     break;
                                 }
                             }
