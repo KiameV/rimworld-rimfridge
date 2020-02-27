@@ -5,6 +5,7 @@
 	<author>Kiame Vivacity</author>
 	<supportedVersions>
         <li>1.0</li>
+        <li>1.1</li>
 	</supportedVersions>
 
 	<url>https://ludeon.com/forums/index.php?topic=32980.0</url>
@@ -34,4 +35,5 @@ Thanks to everyone who's added/edited code!
 -towhead - Made the fridges hide the uglyness of food
 
 Original Author: Vendan</description>
+<packageId>rimfridge.kv.rw</packageId>
 </ModMetaData>
