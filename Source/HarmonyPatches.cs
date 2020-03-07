@@ -90,15 +90,6 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPatch(typeof(TradeUtility), "PlayerSellableNow")]
-    static class Patch_PlayerSellableNow
-    {
-        static void Postfix(bool __result, Thing t)
-        {
-            Log.Message($"{__result} -- {t.def.defName}");
-        }
-    }
-
         [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
     static class Patch_PassingShip_TryOpenComms
     {
