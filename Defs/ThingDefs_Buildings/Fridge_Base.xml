@@ -87,7 +87,7 @@
 		</researchPrerequisites>
 		<surfaceType>Item</surfaceType>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
-		<pathCost>30</pathCost>
+		<pathCost>60</pathCost>
 		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
 	</ThingDef>
 </Defs>

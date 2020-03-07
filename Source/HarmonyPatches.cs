@@ -2,6 +2,7 @@
 using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Verse;
 using Verse.AI;
@@ -17,14 +18,15 @@ namespace RimFridge
             h.PatchAll(Assembly.GetExecutingAssembly());
 
             Log.Message("RimFridge Harmony Patches:" + Environment.NewLine +
-                        "    Prefix:" + Environment.NewLine +
-                        "        ReachabilityUtility.CanReach - So pawns can get items in Wall-Fridges" + Environment.NewLine +
-                        "    Postfix:" + Environment.NewLine +
+                        "  Prefix:" + Environment.NewLine +
+                        "    ReachabilityUtility.CanReach - So pawns can get items in Wall-Fridges" + Environment.NewLine +
+                        "  Postfix:" + Environment.NewLine +
                         "    GameComponentUtility.StartedNewGame - Apply power settings at start" + Environment.NewLine +
                         "    GameComponentUtility.LoadedGame - Apply power settings on load" + Environment.NewLine +
                         "    GenTemperature.TryGetTemperatureForCell - Overrides room temperature within the cells of the RimFridge" + Environment.NewLine +
                         "    TradeShip.ColonyThingsWillingToBuy - Add items stored inside a wall-fridge to the trade list if in a room with an orbital beacon" + Environment.NewLine +
-                        "    FoodUtility.TryFindBestFoodSourceFor - Allow Prisoners to eat food from fridges");
+                        "    FoodUtility.TryFindBestFoodSourceFor - Allow Prisoners to eat food from fridges" + Environment.NewLine +
+                        "    TradeShip.ColonyThingsWillingToBuy");
         }
     }
 
@@ -88,30 +90,63 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
+    [HarmonyPatch(typeof(TradeUtility), "PlayerSellableNow")]
+    static class Patch_PlayerSellableNow
+    {
+        static void Postfix(bool __result, Thing t)
+        {
+            Log.Message($"{__result} -- {t.def.defName}");
+        }
+    }
+
+        [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
     static class Patch_PassingShip_TryOpenComms
     {
+        private readonly static HashSet<ThingDef> RimFridgeDefs = new HashSet<ThingDef>();
+        public static bool IsRimFridge(ThingDef def)
+        {
+            if (RimFridgeDefs.Count == 0)
+            {
+                DefDatabase<ThingDef>.AllDefsListForReading.ForEach(d =>
+                {
+                    switch (d.defName)
+                    {
+                        case "RimFridge_WallRefrigerator":
+                        case "RimFridge_SingleWallRefrigerator":
+                        case "RimFridge_Refrigerator":
+                        case "RimFridge_SingleRefrigerator":
+                        case "RimFridge_QuadRefrigerator":
+                            RimFridgeDefs.Add(d);
+                            break;
+                    }
+                });
+            }
+            if (def == null)
+                return false;
+            return RimFridgeDefs.Contains(def);
+        }
+
         // Before an orbital trade
         static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
         {
+            List<Thing> things = null;
+            Log.Message(playerNegotiator.Name.ToStringFull);
             if (playerNegotiator != null && playerNegotiator.Map != null)
             {
-                foreach (Thing thing in playerNegotiator.Map.listerThings.AllThings)
+                foreach (Thing thing in playerNegotiator.Map.listerBuildings.allBuildingsColonist)
                 {
-                    if (thing != null && 
-                        ThingCompUtility.TryGetComp<CompRefrigerator>(thing) != null && 
-                        thing.def.passability == Traversability.Impassable && 
-                        thing is Building_Storage storage)
+                    if (IsRimFridge(thing?.def))
                     {
+                        var storage = thing as Building_Storage;
                         foreach (IntVec3 cell in storage.AllSlotCells())
                         {
                             foreach (Thing refrigeratedItem in playerNegotiator.Map.thingGrid.ThingsAt(cell))
                             {
                                 if (storage.settings.AllowedToAccept(refrigeratedItem))
                                 {
-                                    if (__result == null)
-                                        __result = new List<Thing>(__result);
-                                    __result.AddItem(refrigeratedItem);
+                                    if (things == null)
+                                        things = new List<Thing>(__result);
+                                    things.Add(refrigeratedItem);
                                     break;
                                 }
                             }
@@ -119,6 +154,8 @@ namespace RimFridge
                     }
                 }
             }
+            if (things != null)
+                __result = things;
         }
     }
 
