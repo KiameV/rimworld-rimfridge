@@ -32,6 +32,7 @@ namespace RimFridge
             {
                 RimFridgeSettingsUtil.ApplyFactor(Settings.PowerFactor.AsFloat);
             }
+            Widgets.CheckboxLabeled(new Rect(0, 140, 200, 30), "Act as Trade Beacon:", ref Settings.ActAsBeacon);
             GUI.EndGroup();
         }
     }
@@ -39,11 +40,13 @@ namespace RimFridge
     internal class Settings : ModSettings
     {
         public static readonly FloatInput PowerFactor = new FloatInput("Base Power Factor");
+        public static bool ActAsBeacon = false;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref (PowerFactor.AsString), "RimFridge.PowerFactor", "1.00", false);
+            Scribe_Values.Look(ref ActAsBeacon, "RimFridge.ActAsBeacon", false, false);
         }
     }
 }

@@ -120,6 +120,9 @@ namespace RimFridge
         // Before an orbital trade
         static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
         {
+            if (!Settings.ActAsBeacon)
+                return;
+
             List<Thing> things = null;
             Log.Message(playerNegotiator.Name.ToStringFull);
             if (playerNegotiator != null && playerNegotiator.Map != null)
