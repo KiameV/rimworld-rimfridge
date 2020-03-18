@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+	<DesignatorDropdownGroupDef>
+		<defName>WallFridgeBase_gr</defName>
+	</DesignatorDropdownGroupDef>
+
 	<ThingDef Name="WallFridgeBase" ParentName="FridgeBase" Abstract="True">
 		<passability>Impassable</passability>
 		<blockWind>true</blockWind>
@@ -7,9 +12,11 @@
 		<coversFloor>true</coversFloor>
 		<blockLight>true</blockLight>
 		<canOverlapZones>false</canOverlapZones>
+		<description>Rottable things stored in this will not spoil. This version acts as a wall and can be acess from both sides.</description>
 		<building>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
+		<designatorDropdown>WallFridgeBase_gr</designatorDropdown>
 	</ThingDef>
 
 	<ThingDef ParentName="WallFridgeBase">
@@ -32,10 +39,10 @@
 		</statBases>
 		<size>(2,1)</size>
 		<comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>90</basePowerConsumption>
-      </li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>90</basePowerConsumption>
+			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/WallDualFridgeLid</texPath>
@@ -45,7 +52,7 @@
 				</graphicData>
 				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
-		</comps>	
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="WallFridgeBase">
@@ -68,10 +75,10 @@
 		</statBases>
 		<size>(1,1)</size>
 		<comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>90</basePowerConsumption>
-      </li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>90</basePowerConsumption>
+			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
 					<texPath>Building/Temperature/Fridge/WallSingleFridgeLid</texPath>
