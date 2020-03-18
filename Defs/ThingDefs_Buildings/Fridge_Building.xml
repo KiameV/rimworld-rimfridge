@@ -2,37 +2,24 @@
 <Defs>
 
 	<DesignatorDropdownGroupDef>
-		<defName>WallFridgeBase_gr</defName>
+		<defName>FridgeBase_gr</defName>
 	</DesignatorDropdownGroupDef>
 
-	<ThingDef Name="WallFridgeBase" ParentName="FridgeBase" Abstract="True">
-		<passability>Impassable</passability>
-		<blockWind>true</blockWind>
-		<fillPercent>1</fillPercent>
-		<coversFloor>true</coversFloor>
-		<blockLight>true</blockLight>
-		<canOverlapZones>false</canOverlapZones>
-		<description>Rottable things stored in this will not spoil. This version acts as a wall and can be acess from both sides.</description>
-		<building>
-			<canPlaceOverWall>true</canPlaceOverWall>
-		</building>
-		<designatorDropdown>WallFridgeBase_gr</designatorDropdown>
-	</ThingDef>
-
-	<ThingDef ParentName="WallFridgeBase">
-		<defName>RimFridge_WallRefrigerator</defName>
-		<label>Wall Dual Refrigerator</label>
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_Refrigerator</defName>
+		<label>Dual Refrigerator</label>
+		<designatorDropdown>FridgeBase_gr</designatorDropdown>
 		<graphicData>
-			<texPath>Building/Temperature/Fridge/WallDualFridge</texPath>
+			<texPath>Building/Temperature/Fridge/DualFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,1)</drawSize>
+			<drawSize>(4,3)</drawSize>
 		</graphicData>
 		<costList>
 			<Steel>40</Steel>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
-			<Mass>30</Mass>
+			<Mass>20</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>1050</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -45,30 +32,31 @@
 			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
-					<texPath>Building/Temperature/Fridge/WallDualFridgeLid</texPath>
+					<texPath>Building/Temperature/Fridge/DualFridgeLid</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<shaderType>Transparent</shaderType>
-					<drawSize>(2,1)</drawSize>
+					<drawSize>(4,3)</drawSize>
 				</graphicData>
 				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="WallFridgeBase">
-		<defName>RimFridge_SingleWallRefrigerator</defName>
-		<label>Wall Single Refrigerator</label>
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_SingleRefrigerator</defName>
+		<label>Single Refrigerator</label>
+		<designatorDropdown>FridgeBase_gr</designatorDropdown>
 		<graphicData>
-			<texPath>Building/Temperature/Fridge/WallSingleFridge</texPath>
+			<texPath>Building/Temperature/Fridge/SingleFridge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1,1)</drawSize>
+			<drawSize>(3, 3)</drawSize>
 		</graphicData>
 		<costList>
 			<Steel>20</Steel>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<statBases>
-			<Mass>15</Mass>
+			<Mass>30</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>750</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -77,14 +65,52 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>90</basePowerConsumption>
+				<basePowerConsumption>80</basePowerConsumption>
 			</li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
-					<texPath>Building/Temperature/Fridge/WallSingleFridgeLid</texPath>
+					<texPath>Building/Temperature/Fridge/SingleFridgeLid</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
 					<shaderType>Transparent</shaderType>
-					<drawSize>(1,1)</drawSize>
+					<drawSize>(3,3)</drawSize>
+				</graphicData>
+				<altitudeLayer>Projectile</altitudeLayer>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_QuadRefrigerator</defName>
+		<label>Quad Refrigerator</label>
+		<designatorDropdown>FridgeBase_gr</designatorDropdown>
+		<graphicData>
+			<texPath>Building/Temperature/Fridge/QuadFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>60</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>70</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1800</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(2,2)</size>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+			<li Class="RimFridge.CompProperties_SecondLayer">
+				<graphicData>
+					<texPath>Building/Temperature/Fridge/QuadFridgeLid</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>Transparent</shaderType>
+					<drawSize>(4,4)</drawSize>
 				</graphicData>
 				<altitudeLayer>Projectile</altitudeLayer>
 			</li>
