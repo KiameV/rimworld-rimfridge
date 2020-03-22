@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef Name="FridgeBase" Abstract="True">
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingClass>Building_Storage</thingClass>
+		<tradeTags>
+			<li>Furniture</li>
+		</tradeTags>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<category>Building</category>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.4</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<building>
+			<preventDeteriorationInside>true</preventDeteriorationInside>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>Corpses</li>
+						<li>Drugs</li>
+						<li>EggsFertilized</li>
+						<li>EggsUnfertilized</li>
+						<li>Foods</li>
+						<li>Medicine</li>
+						<li>PlantMatter</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					<specialFiltersToDisallow>
+						<li>AllowRotten</li>
+					</specialFiltersToDisallow>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<priority>Important</priority>
+				<filter>
+					<categories>
+						<li>FoodMeals</li>
+					</categories>
+					<disallowedThingDefs>
+						<li>MealSurvivalPack</li>
+					</disallowedThingDefs>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<comps>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2.5</glowRadius>
+				<glowColor>(89,188,255,0)</glowColor>
+			</li>
+			<li Class="RimFridge.CompProperties_Refrigerator"> 
+				<drinksBestCold>
+					<li>Beer</li>
+					<li>RC2_Ale</li>
+					<li>RC2_Cider</li>
+					<li>RC2_Grog</li>
+					<li>RC2_Stout</li>
+				</drinksBestCold>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<designationHotKey>Misc12</designationHotKey>
+		<description>Rottable things stored in this will not spoil.</description>
+		<tickerType>Rare</tickerType>
+		<designationCategory>Temperature</designationCategory>
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>AirConditioning</li>
+		</researchPrerequisites>
+		<surfaceType>Item</surfaceType>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<pathCost>30</pathCost>
+		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
+	</ThingDef>
+</Defs>

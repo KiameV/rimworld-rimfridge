@@ -39,7 +39,7 @@ namespace RimFridge
             {
                 foreach (Thing thing in Current.Game.CurrentMap.thingGrid.ThingsAt(dest.Thing.Position))
                 {
-                    if (ThingCompUtility.TryGetComp<CompRefrigerator>(thing) != null)
+                    if (thing is RimFridge_Building)
                     {
                         peMode = PathEndMode.Touch;
                         __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
@@ -69,6 +69,7 @@ namespace RimFridge
         }
     }
 
+    [HarmonyPriority(Priority.First)]
     [HarmonyPatch(typeof(GenTemperature), "TryGetTemperatureForCell")]
     static class Patch_GenTemperature_TryGetDirectAirTemperatureForCell
     {
@@ -90,10 +91,10 @@ namespace RimFridge
         }
     }
 
-        [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
+    [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
     static class Patch_PassingShip_TryOpenComms
     {
-        private readonly static HashSet<ThingDef> RimFridgeDefs = new HashSet<ThingDef>();
+        /*private readonly static HashSet<ThingDef> RimFridgeDefs = new HashSet<ThingDef>();
         public static bool IsRimFridge(ThingDef def)
         {
             if (RimFridgeDefs.Count == 0)
@@ -115,7 +116,7 @@ namespace RimFridge
             if (def == null)
                 return false;
             return RimFridgeDefs.Contains(def);
-        }
+        }*/
 
         // Before an orbital trade
         static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
@@ -129,9 +130,9 @@ namespace RimFridge
             {
                 foreach (Thing thing in playerNegotiator.Map.listerBuildings.allBuildingsColonist)
                 {
-                    if (IsRimFridge(thing?.def))
+                    if (thing is RimFridge_Building storage)//IsRimFridge(thing?.def))
                     {
-                        var storage = thing as Building_Storage;
+                        //var storage = thing as Building_Storage;
                         foreach (IntVec3 cell in storage.AllSlotCells())
                         {
                             foreach (Thing refrigeratedItem in playerNegotiator.Map.thingGrid.ThingsAt(cell))
@@ -139,7 +140,12 @@ namespace RimFridge
                                 if (storage.settings.AllowedToAccept(refrigeratedItem))
                                 {
                                     if (things == null)
-                                        things = new List<Thing>(__result);
+                                    {
+                                        if (__result?.Count() == 0)
+                                            things = new List<Thing>();
+                                        else
+                                            things = new List<Thing>(__result);
+                                    }
                                     things.Add(refrigeratedItem);
                                     break;
                                 }

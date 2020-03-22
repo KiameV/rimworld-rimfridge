@@ -175,11 +175,14 @@ namespace RimFridge
         {
             fixedStorageSettings = new StorageSettings();
             fixedStorageSettings.CopyFrom(((Building_Storage)parent).def.building.fixedStorageSettings);
-            foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
+            if ((parent.GetComp<CompRefrigerator>().props as CompProperties_Refrigerator)?.findAllRottableForFilters == true)
             {
-                if ((td.HasComp(typeof(CompRottable)) || td.HasComp(typeof(CompTemperatureRuinable)) ) && !fixedStorageSettings.filter.Allows(td)) 
+                foreach (ThingDef td in DefDatabase<ThingDef>.AllDefs)
                 {
-                    fixedStorageSettings.filter.SetAllow(td, true);
+                    if ((td.HasComp(typeof(CompRottable)) || td.HasComp(typeof(CompTemperatureRuinable))) && !fixedStorageSettings.filter.Allows(td))
+                    {
+                        fixedStorageSettings.filter.SetAllow(td, true);
+                    }
                 }
             }
         }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThoughtDef>
+		<defName>FrostyBeer</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>2</stackLimit>
+		<stages>
+			<li>
+				<label>enjoyed a cold one</label>
+				<description>Nothing better then a frosty beverage!</description>
+				<baseMoodEffect>5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+</Defs>

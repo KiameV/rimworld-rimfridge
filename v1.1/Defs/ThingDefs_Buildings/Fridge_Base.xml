@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+	<DesignatorDropdownGroupDef>
+		<defName>StandAloneFridgeDesignatorDropdownDef</defName>
+	</DesignatorDropdownGroupDef>
+	<DesignatorDropdownGroupDef>
+		<defName>WallFridgeDesignatorDropdownDef</defName>
+	</DesignatorDropdownGroupDef>
+	
 	<ThingDef Name="FridgeBase" Abstract="True">
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<thingClass>Building_Storage</thingClass>
@@ -37,6 +44,7 @@
 						<li>Medicine</li>
 						<li>PlantMatter</li>
 						<li>PlantFoodRaw</li>
+						<li>BodyParts</li>
 					</categories>
 					<specialFiltersToDisallow>
 						<li>AllowRotten</li>
@@ -70,6 +78,7 @@
 					<li>RC2_Grog</li>
 					<li>RC2_Stout</li>
 				</drinksBestCold>
+				<findAllRottableForFilters>true</findAllRottableForFilters>
 			</li>
 		</comps>
 		<inspectorTabs>

@@ -12,5 +12,6 @@ namespace RimFridge
 
         public List<string> drinksBestCold;
         public float defaultDesiredTemperature = -5f;
+        public bool findAllRottableForFilters;
     }
 }
