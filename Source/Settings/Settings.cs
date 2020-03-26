@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using HugsLib;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
