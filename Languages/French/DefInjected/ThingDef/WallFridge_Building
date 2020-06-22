@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<RimFridge_WallRefrigerator.label>Réfrigérateur mural double</RimFridge_WallRefrigerator.label>
+	<RimFridge_WallRefrigerator.description>Les denrées périssables stockées ici ne se détérioreront pas.</RimFridge_WallRefrigerator.description>
+
+	<RimFridge_SingleWallRefrigerator.label>Réfrigérateur mural simple</RimFridge_SingleWallRefrigerator.label>
+	<RimFridge_SingleWallRefrigerator.description>Les denrées périssables stockées ici ne se détérioreront pas.</RimFridge_SingleWallRefrigerator.description>
+
+</LanguageData>
