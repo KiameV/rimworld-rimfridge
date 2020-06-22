@@ -9,7 +9,7 @@
 	
 	<ThingDef Name="FridgeBase" Abstract="True">
 		<minifiedDef>MinifiedThing</minifiedDef>
-		<thingClass>Building_Storage</thingClass>
+		<thingClass>RimFridge.RimFridge_Building</thingClass>
 		<tradeTags>
 			<li>Furniture</li>
 		</tradeTags>
