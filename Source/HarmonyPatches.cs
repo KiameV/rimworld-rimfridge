@@ -66,17 +66,15 @@ namespace RimFridge
     {
         static void Postfix(bool __result, ref IntVec3 c, ref Map map, ref float tempResult)
         {
-            IEnumerable<Thing> things = map?.thingGrid.ThingsAt(c);
-            if (things != null)
+            if (FridgeCache.FridgeGrid[map.Index].TryGetValue(c, out CompRefrigerator fridge))
             {
-                foreach (Thing thing in things)
+                if (fridge != null)
                 {
-                    CompRefrigerator fridge = ThingCompUtility.TryGetComp<CompRefrigerator>(thing);
-                    if (fridge != null)
-                    {
-                        tempResult = fridge.currentTemp;
-                        __result = true;
-                    }
+                    tempResult = fridge.currentTemp; __result = true;
+                }
+                else
+                {
+                    FridgeCache.FridgeGrid[map.Index].Remove(c);
                 }
             }
         }

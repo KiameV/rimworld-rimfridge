@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace RimFridge
 {
-    public class CompRefrigerator : ThingComp 
+    public class CompRefrigerator : ThingComp
     {
         // Default temperature just below freezing.
 
@@ -144,7 +144,7 @@ namespace RimFridge
                     }
                 }
             }
-            
+
             float changetemperature = (roomTemperature - currentTemp) * 0.01f;
             float changeEnergy = -changetemperature;
             float powerMultiplier = 0f;
@@ -169,6 +169,11 @@ namespace RimFridge
             {
                 powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
             }
+
+            //FridgeCache.FridgeGrid
+            var index = map.Index;
+            foreach (IntVec3 cell in GenAdj.OccupiedRect(parent))
+                FridgeCache.FridgeGrid[index][cell] = this;
         }
 
         private void CreateFixedStorageSettings()
@@ -222,7 +227,7 @@ namespace RimFridge
         public override string CompInspectStringExtra()
         {
             StringBuilder sb = new StringBuilder();
-      
+
             sb.Append("RimFridge.TargetTemperature".Translate());
             sb.Append(": ");
             sb.Append(GenText.ToStringTemperature(desiredTemp, "F0"));
