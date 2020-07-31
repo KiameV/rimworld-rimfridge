@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Text;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -60,21 +61,23 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPriority(Priority.First)]
-    [HarmonyPatch(typeof(GenTemperature), "TryGetTemperatureForCell")]
-    static class Patch_GenTemperature_TryGetDirectAirTemperatureForCell
+    [HarmonyPriority(Priority.Last)]
+    [HarmonyPatch(typeof(CompRottable), "Active", MethodType.Getter)]
+    static class Patch_CompRottable_Freeze
     {
-        static void Postfix(bool __result, ref IntVec3 c, ref Map map, ref float tempResult)
+        static void Postfix(ref bool __result, ThingComp __instance)
         {
-            if (FridgeCache.FridgeGrid[map.Index].TryGetValue(c, out CompRefrigerator fridge))
+            if (__instance.parent.Map == null) return;
+
+            if (FridgeCache.FridgeGrid[__instance?.parent?.Map?.Index ?? 9].TryGetValue(__instance?.parent?.Position ?? IntVec3.Zero, out CompRefrigerator fridge))
             {
-                if (fridge != null)
+                if (fridge != null && fridge.ShouldBeActive)
                 {
-                    tempResult = fridge.currentTemp; __result = true;
+                    __result = false;
                 }
                 else
                 {
-                    FridgeCache.FridgeGrid[map.Index].Remove(c);
+                    FridgeCache.FridgeGrid[__instance.parent.Map.Index].Remove(__instance.parent.Position);
                 }
             }
         }

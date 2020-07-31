@@ -16,8 +16,8 @@ namespace RimFridge
         public float currentTemp = 21f;
 
         public string buildingLabel = "";
-        private StorageSettings fixedStorageSettings;
-        private CompPowerTrader powerTrader => parent.GetComp<CompPowerTrader>();
+        public StorageSettings fixedStorageSettings;
+        public CompPowerTrader powerTrader => parent.GetComp<CompPowerTrader>();
         private CompRefuelable refuelable => parent.GetComp<CompRefuelable>();
 
         public bool ShouldBeActive => (powerTrader != null && powerTrader.PowerOn) || (refuelable != null && refuelable.HasFuel);
@@ -173,7 +173,9 @@ namespace RimFridge
             //FridgeCache.FridgeGrid
             var index = map.Index;
             foreach (IntVec3 cell in GenAdj.OccupiedRect(parent))
+            {
                 FridgeCache.FridgeGrid[index][cell] = this;
+            }
         }
 
         private void CreateFixedStorageSettings()
