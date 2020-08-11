@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Compatibility patch for any other mods trying to generate a RimFridge style building using the old Building_Refrigerator object. -->
+<Patch>
+  <Operation Class="PatchOperationSequence"> 
+	  <success>Always</success> 
+	  <operations>
+		<li Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/comps</xpath>
+		  <value>
+			<li Class="RimFridge.CompProperties_Refrigerator">
+				<drinksBestCold>
+					<li>Beer</li>
+					<li>RC2_Ale</li>
+					<li>RC2_Cider</li>
+					<li>RC2_Grog</li>
+					<li>RC2_Stout</li>
+				</drinksBestCold>
+			</li>
+		  </value>
+		</li>
+		<li Class="PatchOperationReplace">
+		  <xpath>/Defs/ThingDef[thingClass="RimFridge.Building_Refrigerator"]/thingClass</xpath>
+		  <value><thingClass>Building_Storage</thingClass></value>
+		</li>
+	  </operations>
+  </Operation>
+</Patch>

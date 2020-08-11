@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_SingleRefrigerator</defName>
+		<label>Single Refrigerator</label>
+		<designatorDropdown>StandAloneFridgeDesignatorDropdownDef</designatorDropdown>
+		<graphicData>
+			<texPath>Building/Temperature/Fridge/SingleFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3, 3)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>30</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>750</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(1,1)</size>
+		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+      </li>
+			<li Class="RimFridge.CompProperties_SecondLayer">
+				<graphicData>
+					<texPath>Building/Temperature/Fridge/SingleFridgeLid</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>Transparent</shaderType>
+					<drawSize>(3,3)</drawSize>
+				</graphicData>
+				<altitudeLayer>Projectile</altitudeLayer>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_Refrigerator</defName>
+		<label>Dual Refrigerator</label>
+		<designatorDropdown>StandAloneFridgeDesignatorDropdownDef</designatorDropdown>
+		<graphicData>
+			<texPath>Building/Temperature/Fridge/DualFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,3)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>40</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>20</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1050</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(2,1)</size>
+		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>90</basePowerConsumption>
+      </li>
+			<li Class="RimFridge.CompProperties_SecondLayer">
+				<graphicData>
+					<texPath>Building/Temperature/Fridge/DualFridgeLid</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>Transparent</shaderType>
+					<drawSize>(4,3)</drawSize>
+				</graphicData>
+				<altitudeLayer>Projectile</altitudeLayer>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="FridgeBase">
+		<defName>RimFridge_QuadRefrigerator</defName>
+		<label>Quad Refrigerator</label>
+		<designatorDropdown>StandAloneFridgeDesignatorDropdownDef</designatorDropdown>
+		<graphicData>
+			<texPath>Building/Temperature/Fridge/QuadFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		<costList>
+			<Steel>60</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>70</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>1800</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(2,2)</size>
+		<comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>100</basePowerConsumption>
+      </li>
+			<li Class="RimFridge.CompProperties_SecondLayer">
+				<graphicData>
+					<texPath>Building/Temperature/Fridge/QuadFridgeLid</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>Transparent</shaderType>
+					<drawSize>(4,4)</drawSize>
+				</graphicData>
+				<altitudeLayer>Projectile</altitudeLayer>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>
