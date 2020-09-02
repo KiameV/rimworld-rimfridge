@@ -84,7 +84,8 @@ namespace RimFridge
     {
         static void Postfix(Thing __instance, ref float __result)
         {
-            if (__instance.Map != null && __instance.def.rotatable && 
+            Pawn p = __instance as Pawn;
+            if ((p == null || p.Dead) && 
                 FridgeCache.TryGetFridge(__instance.Position, __instance.Map, out CompRefrigerator fridge) &&
                 fridge != null && fridge.ShouldBeActive)
             {

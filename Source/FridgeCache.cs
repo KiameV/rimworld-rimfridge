@@ -13,10 +13,13 @@ namespace RimFridge
 
         private static FridgeCache GetFridgeCache(Map map)
         {
-            foreach (var c in map.components)
-                if (c is FridgeCache fc)
-                    return fc;
-            Log.Error(COULD_NOT_FIND_MAP_COMP);//, COULD_NOT_FIND_MAP_COMP.GetHashCode());
+            if (map != null)
+            {
+                foreach (var c in map.components)
+                    if (c is FridgeCache fc)
+                        return fc;
+                Log.Error(COULD_NOT_FIND_MAP_COMP);//, COULD_NOT_FIND_MAP_COMP.GetHashCode());
+            }
             return null;
         }
 

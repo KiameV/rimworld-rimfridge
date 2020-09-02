@@ -11,6 +11,7 @@ namespace RimFridge
     public class CompRefrigerator : ThingComp
     {
         // Default temperature just below freezing.
+        private bool addedToMapComp = false;
 
         public float desiredTemp;
         public float currentTemp = 21f;
@@ -191,13 +192,30 @@ namespace RimFridge
             base.Initialize(props);
             CreateFixedStorageSettings();
 
-            ((Building_Storage)parent).def.building.fixedStorageSettings = fixedStorageSettings;
-            ((Building_Storage)parent).settings = new StorageSettings((Building_Storage)parent);
-            if (parent.def.building.defaultStorageSettings != null)
+            if (parent is Building_Storage b)
             {
-                ((Building_Storage)parent).settings.CopyFrom(parent.def.building.defaultStorageSettings);
+                b.def.building.fixedStorageSettings = fixedStorageSettings;
+                b.settings = new StorageSettings((Building_Storage)parent);
+                if (b.def.building.defaultStorageSettings != null)
+                {
+                    b.settings.CopyFrom(b.def.building.defaultStorageSettings);
+                }
+                desiredTemp = defaultDesiredTemperature;
             }
-            desiredTemp = defaultDesiredTemperature;
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+
+            FridgeCache.AddFridge(this, this.parent?.Map);
+        }
+
+        public override void PostDeSpawn(Map map)
+        {
+            base.PostDeSpawn(map);
+
+            FridgeCache.AddFridge(this, map);
         }
 
         public override void PostExposeData()
