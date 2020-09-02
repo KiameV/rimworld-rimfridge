@@ -83,6 +83,15 @@ namespace RimFridge
         }
     }
 
+    [HarmonyPatch(typeof(Map), nameof(Map.FinalizeInit))]
+    static class Patch_ClearCache
+    {
+        static void Postfix(Map __instance)
+        {
+            FridgeCache.FridgeGrid[__instance.Index].Clear();
+        }
+    }
+
     [HarmonyPatch(typeof(TradeShip), "ColonyThingsWillingToBuy")]
     static class Patch_PassingShip_TryOpenComms
     {

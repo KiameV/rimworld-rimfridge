@@ -170,12 +170,7 @@ namespace RimFridge
                 powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
             }
 
-            //FridgeCache.FridgeGrid
-            var index = map.Index;
-            foreach (IntVec3 cell in GenAdj.OccupiedRect(parent))
-            {
-                FridgeCache.FridgeGrid[index][cell] = this;
-            }
+            FridgeCache.AddFridgeCompToCache(this, map);
         }
 
         private void CreateFixedStorageSettings()

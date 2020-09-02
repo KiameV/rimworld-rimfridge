@@ -11,17 +11,14 @@ namespace RimFridge
 
         static FridgeCache()
         {
-            for (int i = 0; i < 10; i++) FridgeGrid[i] = new Dictionary<IntVec3, CompRefrigerator>(200);
+            for (int i = 0; i < 10; i++) FridgeGrid[i] = new Dictionary<IntVec3, CompRefrigerator>();
         }
-    }
 
-
-    [HarmonyPatch(typeof(Map), nameof(Map.FinalizeInit))]
-    static class Patch_ClearCache
-    {
-        static void Postfix(Map __instance)
+        public static void AddFridgeCompToCache(CompRefrigerator comp, Map map)
         {
-            FridgeCache.FridgeGrid[__instance.Index].Clear();
+            var index = map.Index;
+            foreach (IntVec3 cell in GenAdj.OccupiedRect(comp.parent))
+                FridgeCache.FridgeGrid[index][cell] = comp;
         }
     }
 }
