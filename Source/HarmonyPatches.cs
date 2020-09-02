@@ -61,34 +61,35 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPriority(Priority.Last)]
+    /*[HarmonyPriority(Priority.Last)]
     [HarmonyPatch(typeof(CompRottable), "Active", MethodType.Getter)]
     static class Patch_CompRottable_Freeze
     {
         static void Postfix(ref bool __result, ThingComp __instance)
         {
-            if (__instance.parent.Map == null) return;
+            if (__instance.parent?.Map == null)
+                return;
 
-            if (FridgeCache.FridgeGrid[__instance?.parent?.Map?.Index ?? 9].TryGetValue(__instance?.parent?.Position ?? IntVec3.Zero, out CompRefrigerator fridge))
+            if (FridgeCache.TryGetFridge(__instance.parent.Position, __instance.parent.Map, out CompRefrigerator fridge) &&
+                fridge != null && fridge.ShouldBeActive)
             {
-                if (fridge != null && fridge.ShouldBeActive)
-                {
-                    __result = false;
-                }
-                else
-                {
-                    FridgeCache.FridgeGrid[__instance.parent.Map.Index].Remove(__instance.parent.Position);
-                }
+                __result = false;
             }
         }
-    }
+    }*/
 
-    [HarmonyPatch(typeof(Map), nameof(Map.FinalizeInit))]
-    static class Patch_ClearCache
+    [HarmonyPriority(Priority.Last)]
+    [HarmonyPatch(typeof(Thing), "AmbientTemperature", MethodType.Getter)]
+    static class Patch_Thing_AmbientTemperature
     {
-        static void Postfix(Map __instance)
+        static void Postfix(Thing __instance, ref float __result)
         {
-            FridgeCache.FridgeGrid[__instance.Index].Clear();
+            if (__instance.Map != null && __instance.def.rotatable && 
+                FridgeCache.TryGetFridge(__instance.Position, __instance.Map, out CompRefrigerator fridge) &&
+                fridge != null && fridge.ShouldBeActive)
+            {
+                __result = 0;
+            }
         }
     }
 

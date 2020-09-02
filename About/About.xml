@@ -34,6 +34,7 @@ Thanks to everyone who's helped translate this mod!
 Thanks to everyone who's added/edited code!
 -Demonseed Elite - Refactored code for better compatibility and additional features
 -towhead - Made the fridges hide the uglyness of food
+-kbatbouta - Finding a more efficient way to keep track of what food is stored and frozen in fridges.
 
 Original Author: Vendan</description>
 <packageId>rimfridge.kv.rw</packageId>

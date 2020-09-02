@@ -169,8 +169,6 @@ namespace RimFridge
             {
                 powerTrader.PowerOutput = -((CompProperties_Power)powerTrader.props).basePowerConsumption * ((powerMultiplier * 0.9f) + 0.1f);
             }
-
-            FridgeCache.AddFridgeCompToCache(this, map);
         }
 
         private void CreateFixedStorageSettings()
