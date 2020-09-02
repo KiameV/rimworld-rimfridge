@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Steam\steamapps\common\RimWorld\Mods\RimFridge\v1.1\Assemblies\</OutputPath>
+    <OutputPath>..\..\..\Steam\steamapps\common\RimWorld\Mods\RimFridge\v1.2\Assemblies\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -70,8 +70,6 @@
     <Compile Include="Dialog_RenameFridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RimFridge_Building.cs" />
-    <Compile Include="SaveStorageSettingsUtil\SaveStorageSettingsGizmoUtil.cs" />
-    <Compile Include="SaveStorageSettingsUtil\SaveTypeEnum.cs" />
     <Compile Include="Settings\FloatInput.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Settings\RimFridgeSettingsUtil.cs" />

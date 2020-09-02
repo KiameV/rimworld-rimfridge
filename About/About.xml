@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-	<name>[KV] RimFridge - 1.1</name>
+	<name>[KV] RimFridge</name>
 	<author>Kiame Vivacity</author>
 	<supportedVersions>
         <li>1.0</li>
         <li>1.1</li>
+        <li>1.2</li>
 	</supportedVersions>
 
 	<url>https://ludeon.com/forums/index.php?topic=32980.0</url>
