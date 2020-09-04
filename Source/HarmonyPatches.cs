@@ -9,6 +9,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 namespace RimFridge
 {
@@ -78,19 +79,21 @@ namespace RimFridge
         }
     }*/
 
-    [HarmonyPriority(Priority.Last)]
+    [HarmonyPriority(Priority.First)]
     [HarmonyPatch(typeof(Thing), "AmbientTemperature", MethodType.Getter)]
     static class Patch_Thing_AmbientTemperature
     {
-        static void Postfix(Thing __instance, ref float __result)
+        static bool Prefix(Thing __instance, ref float __result)
         {
             Pawn p = __instance as Pawn;
-            if ((p == null || p.Dead) && 
+            if ((p == null || p.Dead) && __instance.Map != null &&
                 FridgeCache.TryGetFridge(__instance.Position, __instance.Map, out CompRefrigerator fridge) &&
                 fridge != null && fridge.ShouldBeActive)
             {
                 __result = 0;
+                return false;
             }
+            return true;
         }
     }
 
@@ -178,6 +181,76 @@ namespace RimFridge
                     }
                 }
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(Building_NutrientPasteDispenser), "FindFeedInAnyHopper")]
+    public static class Patch_Building_NutrientPasteDispenser_FindFeedInAnyHopper
+    {
+        static bool Prefix(Building_NutrientPasteDispenser __instance, ref Thing __result)
+        {
+            var fc = FridgeCache.GetFridgeCache(__instance.Map);
+            foreach (IntVec3 cell in __instance.AdjCellsCardinalInBounds)
+            {
+                Thing thing = null;
+                Thing holder = null;
+                foreach (Thing t in cell.GetThingList(__instance.Map))
+                {
+                    if (Building_NutrientPasteDispenser.IsAcceptableFeedstock(t.def))
+                    {
+                        thing = t;
+                    }
+                    if (t.def == ThingDefOf.Hopper || fc?.HasFridgeAt(cell) == true)
+                    {
+                        holder = t;
+                    }
+                }
+                if (thing != null && holder != null)
+                {
+                    __result = thing;
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(Building_NutrientPasteDispenser), "HasEnoughFeedstockInHoppers")]
+    public static class Patch_Building_NutrientPasteDispenser_HasEnoughFeedstockInHoppers
+    {
+        static bool Prefix(Building_NutrientPasteDispenser __instance, ref bool __result)
+        {
+            var fc = FridgeCache.GetFridgeCache(__instance.Map);
+
+            float num = 0f;
+            foreach (IntVec3 cell in __instance.AdjCellsCardinalInBounds)
+            {
+                Thing thing = null;
+                Thing holder = null;
+                foreach (Thing t in cell.GetThingList(__instance.Map))
+                {
+                    if (Building_NutrientPasteDispenser.IsAcceptableFeedstock(t.def))
+                    {
+                        thing = t;
+                    }
+                    if (t.def == ThingDefOf.Hopper || fc?.HasFridgeAt(cell) == true)
+                    {
+                        holder = t;
+                    }
+
+                    if (thing != null && holder != null)
+                    {
+                        num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition, true);
+                        if (num >= __instance.def.building.nutritionCostPerDispense)
+                        {
+                            __result = true;
+                            return false;
+                        }
+                        break;
+                    }
+                }
+            }
+            return false;
         }
     }
 

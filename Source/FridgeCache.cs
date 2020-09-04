@@ -11,7 +11,12 @@ namespace RimFridge
 
         public FridgeCache(Map map) : base(map) { }
 
-        private static FridgeCache GetFridgeCache(Map map)
+        public bool HasFridgeAt(IntVec3 cell)
+        {
+            return this.FridgeGrid.ContainsKey(cell);
+        }
+
+        public static FridgeCache GetFridgeCache(Map map)
         {
             if (map != null)
             {

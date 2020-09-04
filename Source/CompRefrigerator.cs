@@ -10,9 +10,6 @@ namespace RimFridge
 {
     public class CompRefrigerator : ThingComp
     {
-        // Default temperature just below freezing.
-        private bool addedToMapComp = false;
-
         public float desiredTemp;
         public float currentTemp = 21f;
 
