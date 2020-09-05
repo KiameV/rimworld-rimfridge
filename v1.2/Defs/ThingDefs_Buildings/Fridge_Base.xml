@@ -90,7 +90,6 @@
 		<designationCategory>Temperature</designationCategory>
 		<placeWorkers>
 			<li>PlaceWorker_Heater</li>
-			<li>PlaceWorker_NextToHopperAccepter</li>
 		</placeWorkers>
 		<researchPrerequisites>
 			<li>AirConditioning</li>

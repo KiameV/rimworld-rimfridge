@@ -88,9 +88,9 @@ namespace RimFridge
             Pawn p = __instance as Pawn;
             if ((p == null || p.Dead) && __instance.Map != null &&
                 FridgeCache.TryGetFridge(__instance.Position, __instance.Map, out CompRefrigerator fridge) &&
-                fridge != null && fridge.ShouldBeActive)
+                fridge != null)
             {
-                __result = 0;
+                __result = fridge.currentTemp;
                 return false;
             }
             return true;
