@@ -79,6 +79,7 @@ namespace RimFridge
         }
     }*/
 
+    [HarmonyBefore(new string[]{"io.github.dametri.thermodynamicscore"})]
     [HarmonyPriority(Priority.First)]
     [HarmonyPatch(typeof(Thing), "AmbientTemperature", MethodType.Getter)]
     static class Patch_Thing_AmbientTemperature
