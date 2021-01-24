@@ -212,7 +212,7 @@ namespace RimFridge
         {
             base.PostDeSpawn(map);
 
-            FridgeCache.AddFridge(this, map);
+            FridgeCache.RemoveFridge(this, map);
         }
 
         public override void PostExposeData()
