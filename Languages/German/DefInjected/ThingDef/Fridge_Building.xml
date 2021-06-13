@@ -2,13 +2,24 @@
 <LanguageData>
 
   <RimFridge_Refrigerator.label>Kühlschrank</RimFridge_Refrigerator.label>
-  <RimFridge_Refrigerator.description>Verderbliche Waren werden in diesem Kühlschrank nicht verfaulen</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator.description>Verderbliche Waren werden in diesem Kühlschrank nicht verfaulen.</RimFridge_Refrigerator.description>
+  <RimFridge_Refrigerator_Blueprint.label>Kühlschrank (Blaupause)</RimFridge_Refrigerator_Blueprint.label>
+  <RimFridge_Refrigerator_Blueprint_Install.label>Kühlschrank (Blaupause)</RimFridge_Refrigerator_Blueprint_Install.label>
+  <RimFridge_Refrigerator_Frame.label>KühlschrankWandkühlschrank (im Bau)</RimFridge_Refrigerator_Frame.label>
+  <RimFridge_Refrigerator_Frame.description>Verderbliche Waren werden in diesem Kühlschrank nicht verfaulen.</RimFridge_Refrigerator_Frame.description>
 
   <RimFridge_SingleRefrigerator.label>Mini-Kühlschrank</RimFridge_SingleRefrigerator.label>
-  <RimFridge_SingleRefrigerator.description>Verderbliche Waren werden in diesem kleinen Kühlschrank nicht verfaulen</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator.description>Verderbliche Waren werden in diesem kleinen Kühlschrank nicht verfaulen.</RimFridge_SingleRefrigerator.description>
+  <RimFridge_SingleRefrigerator_Blueprint.label>Mini-Kühlschrank (Blaupause)</RimFridge_SingleRefrigerator_Blueprint.label>
+  <RimFridge_SingleRefrigerator_Blueprint_Install.label>Mini-Kühlschrank (Blaupause)</RimFridge_SingleRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleRefrigerator_Frame.label>Mini-KühlschrankWandkühlschrank (im Bau)</RimFridge_SingleRefrigerator_Frame.label>
+  <RimFridge_SingleRefrigerator_Frame.description>Verderbliche Waren werden in diesem kleinen Kühlschrank nicht verfaulen.</RimFridge_SingleRefrigerator_Frame.description>
 
   <RimFridge_QuadRefrigerator.label>Großer Kühlschrank</RimFridge_QuadRefrigerator.label>
-  <RimFridge_QuadRefrigerator.description>Verderbliche Waren werden in diesem großen Kühlschrank nicht verfaulen</RimFridge_QuadRefrigerator.description>
-
+  <RimFridge_QuadRefrigerator.description>Verderbliche Waren werden in diesem großen Kühlschrank nicht verfaulen.</RimFridge_QuadRefrigerator.description>
+  <RimFridge_QuadRefrigerator_Blueprint.label>Großer Kühlschrank (Blaupause)</RimFridge_QuadRefrigerator_Blueprint.label>
+  <RimFridge_QuadRefrigerator_Blueprint_Install.label>Großer Kühlschrank (Blaupause)</RimFridge_QuadRefrigerator_Blueprint_Install.label>
+  <RimFridge_QuadRefrigerator_Frame.label>Großer KühlschrankWandkühlschrank (im Bau)</RimFridge_QuadRefrigerator_Frame.label>
+  <RimFridge_QuadRefrigerator_Frame.description>Verderbliche Waren werden in diesem großen Kühlschrank nicht verfaulen.</RimFridge_QuadRefrigerator_Frame.description>
 
 </LanguageData>
