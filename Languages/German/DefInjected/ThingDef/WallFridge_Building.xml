@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_WallRefrigerator.label>Wandkühlschrank</RimFridge_WallRefrigerator.label>
+  <RimFridge_WallRefrigerator.description>Verderbliche Waren werden in diesem Wandkühlschrank nicht verfaulen. Dieser kann wie eine Wand nicht passiert werden.</RimFridge_WallRefrigerator.description>
+  <RimFridge_WallRefrigerator_Blueprint.label>Wandkühlschrank (Blaupause)</RimFridge_WallRefrigerator_Blueprint.label>
+  <RimFridge_WallRefrigerator_Blueprint_Install.label>Wandkühlschrank (Blaupause)</RimFridge_WallRefrigerator_Blueprint_Install.label>
+  <RimFridge_WallRefrigerator_Frame.label>Wandkühlschrank (im Bau)</RimFridge_WallRefrigerator_Frame.label>
+  <RimFridge_WallRefrigerator_Frame.description>Verderbliche Waren werden in diesem Kühlschrank nicht verfaulen. Dieser kann wie eine Wand nicht passiert werden.</RimFridge_WallRefrigerator_Frame.description>
+
+  <RimFridge_SingleWallRefrigerator.label>Doppelter Wandkühlschrank</RimFridge_SingleWallRefrigerator.label>
+  <RimFridge_SingleWallRefrigerator.description>Verderbliche Waren werden in diesem doppelten Wandkühlschrank nicht verfaulen. Dieser kann wie eine Wand nicht passiert werden.</RimFridge_SingleWallRefrigerator.description>
+  <RimFridge_SingleWallRefrigerator_Blueprint.label>Doppelter Wandkühlschrank (Blaupause)</RimFridge_SingleWallRefrigerator_Blueprint.label>
+  <RimFridge_SingleWallRefrigerator_Blueprint_Install.label>Doppelter Wandkühlschrank (Blaupause)</RimFridge_SingleWallRefrigerator_Blueprint_Install.label>
+  <RimFridge_SingleWallRefrigerator_Frame.label>Doppelter Wandkühlschrank (im Bau)</RimFridge_SingleWallRefrigerator_Frame.label>
+  <RimFridge_SingleWallRefrigerator_Frame.description>Verderbliche Waren werden in diesem doppelten Wandkühlschrank nicht verfaulen. Dieser kann wie eine Wand nicht passiert werden.</RimFridge_SingleWallRefrigerator_Frame.description>
+
+</LanguageData>
