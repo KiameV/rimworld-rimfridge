@@ -1,7 +1,4 @@
 ﻿using RimWorld;
-using SaveStorageSettingsUtil;
-using System.Collections.Generic;
-using Verse;
 
 namespace RimFridge
 {
@@ -9,10 +6,10 @@ namespace RimFridge
     {
         public RimFridge_Building() : base() { }
 
-        public override IEnumerable<Gizmo> GetGizmos()
+        /*public override IEnumerable<Gizmo> GetGizmos()
         {
             List<Gizmo> l = new List<Gizmo>(base.GetGizmos());
             return SaveStorageSettingsGizmoUtil.AddSaveLoadGizmos(l, "fridge", this.settings.filter);
-        }
+        }*/
     }
 }

@@ -26,7 +26,7 @@ namespace RimFridge
     [HarmonyPatch(typeof(ReachabilityUtility), "CanReach")]
     static class Patch_ReachabilityUtility_CanReach
     {
-        static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBash, TraverseMode mode)
+        static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBashDoors, TraverseMode mode)
         {
             if (dest != null && dest.Thing != null && dest.Thing.def.category == ThingCategory.Item)
             {
@@ -35,7 +35,7 @@ namespace RimFridge
                     if (thing is RimFridge_Building)
                     {
                         peMode = PathEndMode.Touch;
-                        __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBash));
+                        __result = pawn.Spawned && pawn.Map.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBashDoors));
                         return false;
                     }
                 }
@@ -155,7 +155,7 @@ namespace RimFridge
                 getter.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {
                 Room prison = getter.Position.GetRoomOrAdjacent(getter.Map);
-                if (prison != null && prison.isPrisonCell)
+                if (prison != null && prison.IsPrisonCell)
                 {
                     foreach (Thing t in prison.ContainedAndAdjacentThings)
                     {

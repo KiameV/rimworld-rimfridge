@@ -39,7 +39,7 @@ namespace RimFridge
         {
             if (name.Length == 0) return true;
             AcceptanceReport result = base.NameIsValid(name);
-            return !result.Accepted ? result : true;
+            return !result.Accepted ? result : AcceptanceReport.WasAccepted;
         }
 
         public override void DoWindowContents(Rect inRect)
