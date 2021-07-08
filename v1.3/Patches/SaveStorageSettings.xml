@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[KV] Save Storage, Outfit, Crafting, Drug, &amp; Operation Settings</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[@Name="FridgeBase"]/comps</xpath>
+			<value>
+				<li Class="SaveStorageSettings.CompProperties_SaveStorageSettings">
+					<name>fridge</name>
+				</li>
+			</value>
+		</match>
+	</Operation>
+</Patch>
