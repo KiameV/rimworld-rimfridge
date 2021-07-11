@@ -1,4 +1,4 @@
-# [KV] RimFridge - 1.1 - a mod for RimWorld
+# [KV] RimFridge - a mod for RimWorld
 
 ## Adds refrigerated racks to keep food and other perishables cold.  
 
