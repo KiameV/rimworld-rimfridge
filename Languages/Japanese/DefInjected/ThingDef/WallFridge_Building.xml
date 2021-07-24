@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimFridge_SingleWallRefrigerator.label>壁用冷蔵庫 (一人用)</RimFridge_SingleWallRefrigerator.label>
+  <RimFridge_SingleWallRefrigerator.description>これに保存される鮮度のあるアイテムは、腐敗しません。</RimFridge_SingleWallRefrigerator.description>
+  <Blueprint_RimFridge_SingleWallRefrigerator.label>壁用冷蔵庫 (一人用)(設計)</Blueprint_RimFridge_SingleWallRefrigerator.label>
+  <Blueprint_Install_RimFridge_SingleWallRefrigerator.label>壁用冷蔵庫 (一人用)(移動先)</Blueprint_Install_RimFridge_SingleWallRefrigerator.label>
+  <Frame_RimFridge_SingleWallRefrigerator.label>壁用冷蔵庫 (一人用)(施工)</Frame_RimFridge_SingleWallRefrigerator.label>
+  <Frame_RimFridge_SingleWallRefrigerator.description>これに保存される鮮度のあるアイテムは、腐敗しません。</Frame_RimFridge_SingleWallRefrigerator.description>
+
+  <RimFridge_WallRefrigerator.label>壁用冷蔵庫 (2連)</RimFridge_WallRefrigerator.label>
+  <RimFridge_WallRefrigerator.description>これに保存される鮮度のあるアイテムは、腐敗しません。</RimFridge_WallRefrigerator.description>
+  <Blueprint_RimFridge_WallRefrigerator.label>壁用冷蔵庫 (2連)(設計)</Blueprint_RimFridge_WallRefrigerator.label>
+  <Blueprint_Install_RimFridge_WallRefrigerator.label>壁用冷蔵庫 (2連)(移動先)</Blueprint_Install_RimFridge_WallRefrigerator.label>
+  <Frame_RimFridge_WallRefrigerator.label>壁用冷蔵庫 (2連)(施工)</Frame_RimFridge_WallRefrigerator.label>
+  <Frame_RimFridge_WallRefrigerator.description>これに保存される鮮度のあるアイテムは、腐敗しません。</Frame_RimFridge_WallRefrigerator.description>
+
+</LanguageData>
