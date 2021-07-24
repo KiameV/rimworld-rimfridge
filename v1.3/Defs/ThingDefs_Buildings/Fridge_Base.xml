@@ -66,7 +66,7 @@
 		<comps>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Glower">
+			<li Class="RimFridge.CompProperties_ToggleGlower">
 				<glowRadius>2.5</glowRadius>
 				<glowColor>(89,188,255,0)</glowColor>
 			</li>
