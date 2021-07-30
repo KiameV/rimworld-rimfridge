@@ -190,7 +190,6 @@ namespace RimFridge
     {
         static bool Prefix(Building_NutrientPasteDispenser __instance, ref Thing __result)
         {
-            var fc = FridgeCache.GetFridgeCache(__instance.Map);
             foreach (IntVec3 cell in __instance.AdjCellsCardinalInBounds)
             {
                 Thing thing = null;
@@ -201,7 +200,7 @@ namespace RimFridge
                     {
                         thing = t;
                     }
-                    if (t.def == ThingDefOf.Hopper || fc?.HasFridgeAt(cell) == true)
+                    if (t.def == ThingDefOf.Hopper || t is RimFridge_Building)
                     {
                         holder = t;
                     }
@@ -221,33 +220,66 @@ namespace RimFridge
     {
         static bool Prefix(Building_NutrientPasteDispenser __instance, ref bool __result)
         {
-            var fc = FridgeCache.GetFridgeCache(__instance.Map);
-
             float num = 0f;
-            foreach (IntVec3 cell in __instance.AdjCellsCardinalInBounds)
+            for (int i = 0; i < __instance.AdjCellsCardinalInBounds.Count; i++)
             {
+                IntVec3 c = __instance.AdjCellsCardinalInBounds[i];
                 Thing thing = null;
-                Thing holder = null;
-                foreach (Thing t in cell.GetThingList(__instance.Map))
+                Thing thing2 = null;
+                List<Thing> thingList = c.GetThingList(__instance.Map);
+                for (int j = 0; j < thingList.Count; j++)
                 {
-                    if (Building_NutrientPasteDispenser.IsAcceptableFeedstock(t.def))
+                    Thing thing3 = thingList[j];
+                    if (Building_NutrientPasteDispenser.IsAcceptableFeedstock(thing3.def))
                     {
-                        thing = t;
+                        thing = thing3;
                     }
-                    if (t.def == ThingDefOf.Hopper || fc?.HasFridgeAt(cell) == true)
+                    if (thing3.def == ThingDefOf.Hopper || thing3 is RimFridge_Building)
                     {
-                        holder = t;
+                        thing2 = thing3;
                     }
+                }
+                if (thing != null && thing2 != null)
+                {
+                    num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition);
+                }
+                if (num >= __instance.def.building.nutritionCostPerDispense)
+                {
+                    __result = true;
+                    return false;
+                }
+            }
+            __result = false;
+            return false;
+        }
+    }
 
-                    if (thing != null && holder != null)
+    [HarmonyPatch(typeof(Alert_PasteDispenserNeedsHopper), "BadDispensers", MethodType.Getter)]
+    public static class Patch_Alert_PasteDispenserNeedsHopper_BadDispensers_Getter
+    {
+        static bool Prefix(Alert_PasteDispenserNeedsHopper __instance, ref List<Thing> __result)
+        {
+            __result = (List<Thing>)__instance.GetType().GetField("badDispensersResult", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance);
+            __result.Clear();
+            List<Map> maps = Find.Maps;
+            for (int i = 0; i < maps.Count; i++)
+            {
+                foreach (Thing item in maps[i].listerThings.ThingsInGroup(ThingRequestGroup.FoodDispenser))
+                {
+                    bool flag = false;
+                    ThingDef hopper = ThingDefOf.Hopper;
+                    foreach (IntVec3 adjCellsCardinalInBound in ((Building_NutrientPasteDispenser)item).AdjCellsCardinalInBounds)
                     {
-                        num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition, true);
-                        if (num >= __instance.def.building.nutritionCostPerDispense)
+                        Thing edifice = adjCellsCardinalInBound.GetEdifice(item.Map);
+                        if (edifice != null && (edifice.def == hopper || edifice is RimFridge_Building))
                         {
-                            __result = true;
-                            return false;
+                            flag = true;
+                            break;
                         }
-                        break;
+                    }
+                    if (!flag)
+                    {
+                        __result.Add(item);
                     }
                 }
             }
