@@ -142,14 +142,14 @@ namespace RimFridge
         }
     }
 
-    [HarmonyPatch(typeof(FoodUtility), "TryFindBestFoodSourceFor")]
+    [HarmonyPatch(typeof(FoodUtility), "TryFindBestFoodSourceFor_NewTemp")]
     static class Patch_FoodUtility_TryFindBestFoodSourceFor
     {
-        static void Postfix(ref bool __result, Pawn getter, Pawn eater, ref Thing foodSource, ref ThingDef foodDef, bool canRefillDispenser, bool canUseInventory, bool allowForbidden, bool allowCorpse, bool allowSociallyImproper, bool allowHarvest, bool forceScanWholeMap)
+        static void Postfix(ref bool __result, Pawn getter, Pawn eater, bool desperate, ref Thing foodSource, ref ThingDef foodDef, bool canRefillDispenser, bool canUseInventory, bool canUsePackAnimalInventory, bool allowForbidden, bool allowCorpse, bool allowSociallyImproper, bool allowHarvest, bool forceScanWholeMap, bool ignoreReservations, bool calculateWantedStackCount, FoodPreferability minPrefOverride)
         {
             if (__result == false &&
                 getter.Map != null &&
-                getter.Faction != Faction.OfPlayer &&
+                //getter.Faction != Faction.OfPlayer &&
                 getter == eater &&
                 getter.RaceProps.ToolUser &&
                 getter.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))

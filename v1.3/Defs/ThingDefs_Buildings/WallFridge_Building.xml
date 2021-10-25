@@ -35,7 +35,7 @@
 		<comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>90</basePowerConsumption>
+        <basePowerConsumption>70</basePowerConsumption>
       </li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
@@ -71,7 +71,7 @@
 		<comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>90</basePowerConsumption>
+        <basePowerConsumption>100</basePowerConsumption>
       </li>
 			<li Class="RimFridge.CompProperties_SecondLayer">
 				<graphicData>
