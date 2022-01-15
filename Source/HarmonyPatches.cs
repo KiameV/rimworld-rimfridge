@@ -28,17 +28,24 @@ namespace RimFridge
     {
         static bool Prefix(ref bool __result, Pawn pawn, LocalTargetInfo dest, PathEndMode peMode, Danger maxDanger, bool canBashDoors, TraverseMode mode)
         {
-            if (dest.Thing?.def.category == ThingCategory.Item)
+            try
             {
-                foreach (Thing thing in Current.Game?.CurrentMap?.thingGrid?.ThingsAt(dest.Thing.Position))
+                if (dest.Thing?.def.category == ThingCategory.Item)
                 {
-                    if (thing is RimFridge_Building)
+                    foreach (Thing thing in Current.Game?.CurrentMap?.thingGrid?.ThingsAt(dest.Thing.Position))
                     {
-                        peMode = PathEndMode.Touch;
-                        __result = pawn?.Spawned == true && pawn.Map?.reachability.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBashDoors)) == true;
-                        return false;
+                        if (thing is RimFridge_Building)
+                        {
+                            peMode = PathEndMode.Touch;
+                            __result = pawn?.Spawned == true && pawn.Map?.reachability?.CanReach(pawn.Position, dest, peMode, TraverseParms.For(pawn, maxDanger, mode, canBashDoors)) == true;
+                            return false;
+                        }
                     }
                 }
+            }
+            catch
+            {
+                Log.Warning("RimFridge: something went wrong with CanReach check, going back to original game logic.");
             }
             return true;
         }
