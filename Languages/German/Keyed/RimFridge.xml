@@ -5,5 +5,7 @@
   <RimFridge.CurrentTemperature>Derzeitige Temperatur</RimFridge.CurrentTemperature>
   <RimFridge.Power>Leistung</RimFridge.Power>
   <RimFridge.RenameTheRefrigerator>Kühlschrank umbenennen</RimFridge.RenameTheRefrigerator>
+  <RimFridge.ToggleGlowColor>Schalte Leuchtfarbe um</RimFridge.ToggleGlowColor>
+  <RimFridge.ToggleGlowColorDesc>Schalte die Leuchtfarbe zwischen normalen und schwachem Licht um.</RimFridge.ToggleGlowColorDesc>
 
 </LanguageData>
